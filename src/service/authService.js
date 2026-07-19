@@ -1,4 +1,4 @@
-import pool from "../config/database";
+import pool from "../config/database.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -58,7 +58,7 @@ class AuthService {
         //2 verificar se o email ja existe
 
         const userExists = await pool.query(`
-                SELECT id
+                SELECT id_user
                 FROM users
                 where email_user = $1
             `,
@@ -82,8 +82,8 @@ class AuthService {
                     email_user,
                     password_user
                 ) values (
-                    $1
-                    $2
+                    $1,
+                    $2,
                     $3
                 )
                 returning id, name, email 

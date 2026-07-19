@@ -1,4 +1,4 @@
-import authService from "../service/authService";
+import authService from "../service/authService.js";
 
 class AuthController {
     async login(req, res) {
@@ -17,7 +17,7 @@ class AuthController {
         }
     }
 
-    async register(res, req) {
+    async register(req, res) {
         try {
             const { name, email, password } = req.body
 
