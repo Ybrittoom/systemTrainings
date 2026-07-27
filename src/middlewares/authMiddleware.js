@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
-try {
 
-    function authMiddleware(req, res, next) {
+function authMiddleware(req, res, next) {
+    try {
         //pegar o token no headers
         const token = req.headers.authorization;
 
@@ -25,14 +25,14 @@ try {
 
         //liberar
         next()
+    } catch (error) {
+        return res.status(401).json({
+
+            message: "Token inválido"
+
+        });
     }
-} catch (error) {
-    return res.status(401).json({
-
-        message: "Token inválido"
-
-    });
 }
 
 
-export default authMiddleware();
+export default authMiddleware;

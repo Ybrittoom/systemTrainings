@@ -1,12 +1,16 @@
 import { Router } from "express";
 import AuthController from "../controller/authController.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
+import profileController from "../controller/profileController.js";
 
 const router = Router();
 
+//rotas publicas(sem middleware)
 router.post("/login", AuthController.login);
 router.post("/register", AuthController.register)
 
-//rotas do profile
-router.get("/profile", profileController.getProfile)
+//rotas do profile, necessita de middlware
+router.get("/profile", authMiddleware ,profileController.getProfile)
+router.put("/profile", authMiddleware, profileController.updateProfile)
 
 export default router;
