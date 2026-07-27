@@ -6,4 +6,7 @@ const router = Router();
 router.post("/login", AuthController.login);
 router.post("/register", AuthController.register)
 
+//rotas do profile
+router.get("/profile", profileController.getProfile)
+
 export default router;

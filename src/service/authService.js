@@ -21,7 +21,7 @@ class AuthService {
         //verificando a senha 
         const correctPassword = await bcrypt.compare(//pega a senha digitada e compara com o hash
             password,
-            user.password
+            user.password_user
         );
         
         if(!correctPassword) {
@@ -30,7 +30,7 @@ class AuthService {
         //gerando o token
         const token = jwt.sign(
             //isso é o payload, informaçoes que voce quer guardar
-            {id:user.id},
+            {id:user.id_user},
             process.env.JWT_SECRET,
             {
                 expiresIn:"24h"
@@ -40,16 +40,16 @@ class AuthService {
         return {
             token,
             user: {
-                id: user.id,
-                name: user.name,
-                email: user.email
+                id: user.id_user,
+                name: user.name_user,
+                email: user.email_user
             }
         };
     }
 
-    async register(name, email, password) {
+    async register(name, email, password, birth_date, weight, height) {//lembra de passar para o controller
         //verificando se os dados foi preenchidos corretamente
-        if (!name || !email || !password) { 
+        if (!name || !email || !password || !birth_date || !weight || !height) { 
             throw new Error("Por favor , preencha todos os dados!")
         };
 
@@ -80,18 +80,27 @@ class AuthService {
                 (
                     name_user,
                     email_user,
-                    password_user
+                    password_user,
+                    birth_date,
+                    weight,
+	                height
                 ) values (
                     $1,
                     $2,
-                    $3
+                    $3,
+                    $4,
+                    $5,
+                    $6
                 )
-                returning id, name, email 
+                returning id_user, name_user, email_user, birth_date, weight, height
             `,
             [
                 name,
                 email,
-                passwordHash
+                passwordHash,
+                birth_date,
+                weight,
+                height
             ]
         );
 
