@@ -46,6 +46,24 @@ class ProfileController {
                 message: error.message
             })
         }
+    };
+
+    async updatePassword(req, res) {
+        try {
+            const userId = req.user.id
+            //pegar o novo dados 
+            const {
+                password
+            } = req.body
+
+            const result = await profileService.updatePassword(userId, password)
+
+            return res.status(200).json(result)
+        } catch (error) {
+            return res.status(400).json({
+                message: error.message
+            })
+        }
     }
 }
 

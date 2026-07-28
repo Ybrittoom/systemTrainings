@@ -70,6 +70,37 @@ class ProfileService {
                 height: user.height
             }
         }
+    };
+
+    async updatePassword(id, password) {
+        if (!password) {
+            throw new Error("Por favor , digite a nova senha!")
+        }
+
+        //forçar virar String
+        const passwordString = String(password)
+
+        const passwordHash = await bcrypt.hash(passwordString, 10)
+        
+        const result = await pool.query(`
+                update users
+                set 
+                    password_user = $1
+                where id_user = $2
+                returning password_user
+            `,
+            [passwordHash, id] 
+        );
+
+        if (result.rows.length === 0) {
+            throw new Error("Usuario nao encontrado!")
+        }
+
+        return {
+            message: "Senha atualizada com sucesso!",
+            
+        }
+
     }
 }
 
