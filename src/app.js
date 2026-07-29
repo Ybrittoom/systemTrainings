@@ -7,14 +7,22 @@ const app = express();//criando a aplicaçao
 
 const __filename = fileURLToPath(import.meta.url);
 
-const __dirname = pathth.dirname(__filename)
+const __dirname = path.dirname(__filename)
+
+app.use(express.json())
 
 app.use(
     express.static(
-        path.join(__dirname, "../public")
+        path.join(__dirname, "public")
     )
-);//sempre que chegar algo ela transforma em objeto json
+);
 
-app.use(authRoutes);//usando todas as rota do arquivo authRoutes.js
+app.get("/login", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "views", "login.html")
+    )
+})
+
+app.use("/api/auth", authRoutes);//usando todas as rota do arquivo authRoutes.js
 
 export default app;
