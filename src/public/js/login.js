@@ -14,5 +14,5 @@ form.addEventListener("submit", async (event) => { //ao clicar em entrar executa
         result.token
     );
 
-    window.location.href = "dashboard.html"
+    window.location.href = "/dashboard"
 })

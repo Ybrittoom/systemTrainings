@@ -17,9 +17,16 @@ app.use(
     )
 );
 
+//rota de login para servi no front end
 app.get("/login", (req, res) => {
     res.sendFile(
         path.join(__dirname, "views", "login.html")
+    )
+})
+
+app.get("/dashboard.html", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "views", "dashboard.html")
     )
 })
 
