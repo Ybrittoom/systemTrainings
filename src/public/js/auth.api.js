@@ -11,7 +11,12 @@ async function login(email, password) {
             password
         })
     })
-    return await response.json();
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.message || "Erro ao fazer o login")
+    }
+
+    return(data);
 }
 
 export { login };

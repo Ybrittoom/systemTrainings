@@ -7,4 +7,20 @@ const __dirname = path.dirname(__filename);
  
 const router = Router();
 
-router.get("/login")
+//rota para aparece a pagina de login
+router.get("/login", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, ".." ,"views", "login.html")
+    )
+})
+
+router.get("/dashboard", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, ".." , "views", "dashboard.html")
+    )
+})
+
+//criando a rota /profile
+
+
+export default router;

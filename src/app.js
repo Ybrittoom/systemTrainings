@@ -1,5 +1,6 @@
 import express from "express"
 import authRoutes from "./routes/auth.routes.js"
+import viewRoutes from "./routes/view.routes.js"
 import { fileURLToPath } from "url"
 import path from "path";
 
@@ -17,19 +18,8 @@ app.use(
     )
 );
 
-//rota de login para servi no front end
-app.get("/login", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "views", "login.html")
-    )
-})
 
-app.get("/dashboard.html", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "views", "dashboard.html")
-    )
-})
-
+app.use(viewRoutes)
 app.use("/api/auth", authRoutes);//usando todas as rota do arquivo authRoutes.js
 
 export default app;
