@@ -1,24 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/login.css">
-    <title>statri- login</title>
-</head>
-<body>
-    <form id="loginForm" >
-        <label for="emailLabel" class="emailLabel">Email</label>
-        <input type="text" id="emailInput" class="emailInput" placeholder="Insira seu email">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>STATRI | Entrar</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo">
+        ST<span class="a">A</span>TRI
+        <small>performance through precision</small>
+      </div>
+      <nav class="menu">
+        <a href="#">Sobre</a>
+        <a href="login.html">Entrar</a>
+        <span class="bandeira" aria-label="Português do Brasil"></span>
+      </nav>
+    </header>
 
-        <label for="senhaLabel" class="senhaLabel">Senha</label>
-        <input type="password" id="senhaInput" class="senhaInput" placeholder="insira sua senha">
+    <main class="hero">
+      <div class="foto"></div>
 
-        <button class="btnEntrar" id="btnEntrar" type="submit">entra</button>
+      <section class="centro">
+        <h1>Bem-vindo de volta.<br />Continue evoluindo.</h1>
+        <p class="sub">Acesse seus dados de natação, bike e corrida.</p>
 
-        <p id="errorMessage"></p>
-    </form>
+        <form class="form" onsubmit="return false">
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input id="emailInput" type="email" placeholder="seu@email.com" required />
+          </div>
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <input id="senhaInput" type="password" placeholder="••••••••" required />
+          </div>
+          <div class="opcoes">
+            <a href="#">Esqueci minha senha</a>
+          </div>
+          <button class="botao" type="submit">Entrar</button>
+        </form>
 
-    <script type="module" src="../js/login.js"></script>
-</body>
+        <p class="aviso">Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
+      </section>
+
+      <div class="foto"></div>
+    </main>
+
+    <footer class="footer">
+      <div class="logo">ST<span class="a">A</span>TRI</div>
+      <nav>
+        <a href="#">Recursos</a>
+        <a href="#">Historia</a>
+        <a href="#">Sobre</a>
+      </nav>
+      <div class="social">
+        <a href="#"><span class="icone ig"></span> Instagram</a>
+        <a href="#"><span class="icone in"></span> Linkedin</a>
+      </div>
+    </footer>
+
+    <script type="module" src="/js/login.js"></script>
+  </body>
 </html>

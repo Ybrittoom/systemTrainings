@@ -7,6 +7,11 @@ async function getProfile() {
         method: 'GET',
         headers: {
            //ao invez de mandar o body, apenas mandar a autorizaçao 
+            Authorization: `Bearer ${token}`
         }
-    })
+    });
+
+    return await response.json();
 }
+
+export default getProfile
