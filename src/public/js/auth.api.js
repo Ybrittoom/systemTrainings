@@ -19,4 +19,27 @@ async function login(email, password) {
     return(data);
 }
 
-export { login };
+async function cadastro(name, email, password, birth_date, weight, height) {
+    const response = await fetch(`${API_URL}/register`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name,
+            email,
+            password,
+            birth_date,
+            height,
+            height
+        })
+    })
+    const data = await response.json()
+    if(!response.ok) {
+        throw new Error(data.message || "Erro ao fazer cadastro")
+    }
+
+    return(data)
+}
+
+export { login, cadastro };

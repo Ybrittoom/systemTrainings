@@ -12,7 +12,7 @@ class AuthController {
             return res.status(201).json(result)//devolvendo o resultado
         } catch (error) {
             return res.status(500).json({
-                message: error.message
+                message: error.message,
             })
         }
     }

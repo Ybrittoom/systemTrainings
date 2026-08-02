@@ -1,11 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadastro</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STATRI | Cadastre-se</title>
+  <link rel="stylesheet" href="/css/login.css" />
 </head>
+
 <body>
-    
+  <header class="topbar">
+    <div class="logo">
+      ST<span class="a">A</span>TRI
+      <small>performance through precision</small>
+    </div>
+    <nav class="menu">
+      <a href="#">Sobre</a>
+      <a href="login.html">Entrar</a>
+      <span class="bandeira" aria-label="Português do Brasil"></span>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="foto"></div>
+
+    <section class="centro">
+      <h1>Não apenas treine.<br />Supere-se.</h1>
+      <p class="sub">
+        Transforme seus dados de natação, bike e corrida em evolução real com
+        estatísticas de elite.
+      </p>
+
+      <form class="form" id="form">
+        <div class="campo">
+          <label for="nome">Nome completo</label>
+          <input id="nome" type="text" placeholder="Seu nome" required />
+        </div>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="linha">
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <input id="senha" type="password" placeholder="••••••••" required />
+          </div>
+          <div class="campo">
+            <label for="nascimento">Data Nascimento</label>
+            <input id="nascimento" type="date" required />
+          </div>
+          <div class="campo">
+            <label for="peso">Peso</label>
+            <input id="peso" type="number" />
+          </div>
+          <div class="campo">
+            <label for="altura">Altura</label>
+            <input id="altura" type="number" />
+          </div>
+        </div>
+        <p class="aviso">Ja é membro? <a href="login.html">Acesse aqui</a></p>
+        <button class="botao" type="submit">Cadastre-se</button>
+        <p id="errorMessage"></p>
+      </form>
+    </section>
+
+    <div class="foto"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="logo">ST<span class="a">A</span>TRI</div>
+    <nav>
+      <a href="#">Recursos</a>
+      <a href="#">Historia</a>
+      <a href="#">Sobre</a>
+    </nav>
+    <div class="social">
+      <a href="#"><span class="icone ig"></span> Instagram</a>
+      <a href="#"><span class="icone in"></span> Linkedin</a>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/cadastro.js"></script>
 </body>
+
 </html>

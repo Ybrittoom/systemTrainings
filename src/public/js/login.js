@@ -1,6 +1,6 @@
 import { login } from "./auth.api.js"
 
-const form = document.getElementById("loginForm");
+const form = document.getElementById("form");
 
 form.addEventListener("submit", async (event) => { //ao clicar em entrar executa essa funçao
     event.preventDefault();
@@ -18,3 +18,4 @@ form.addEventListener("submit", async (event) => { //ao clicar em entrar executa
 
     }
 })
+
