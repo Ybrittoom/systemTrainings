@@ -30,7 +30,7 @@ async function cadastro(name, email, password, birth_date, weight, height) {
             email,
             password,
             birth_date,
-            height,
+            weight,
             height
         })
     })

@@ -9,8 +9,8 @@ form.addEventListener("submit", async (event) => {
     const email = document.getElementById("email").value
     const password = document.getElementById("senha").value
     const birth_date = document.getElementById("nascimento").value
-    const weight = document.getElementById("peso").value
-    const height = document.getElementById("altura").value
+    const weight = Number(document.getElementById("peso").value)
+    const height = Number(document.getElementById("altura").value)
 
     const errorMessage = document.getElementById("errorMessage")
 
@@ -24,7 +24,7 @@ form.addEventListener("submit", async (event) => {
             height
         )
       
-        window.location.href = "/login.html"
+        window.location.href = "/login"
     } catch (error) {
         errorMessage.textContent = error.message
     }
