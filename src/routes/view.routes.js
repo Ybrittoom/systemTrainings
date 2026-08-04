@@ -27,6 +27,11 @@ router.get("/dashboard", (req, res) => {
 })
 
 //criando a rota /profile
+router.get("/profile", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "..", "views", "profile.html")
+    )
+})
 
 
 export default router;
