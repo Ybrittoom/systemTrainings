@@ -47,6 +47,14 @@ class AuthService {
         };
     }
 
+    async getFirstLetterName (id,name) {
+        if (!name) {
+            throw new Error("Por Favor, preencha todos os dados")
+        }
+
+        const querySQL = await pool.query()
+    }
+
     async register(name, email, password, birth_date, weight, height) {//lembra de passar para o controller
         //verificando se os dados foi preenchidos corretamente
         if (!name || !email || !password || !birth_date || !weight || !height) { 

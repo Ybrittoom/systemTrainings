@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>STATRI | Perfil</title>
-    <link rel="stylesheet" href="statri.css" />
+    <link rel="stylesheet" href="/css/login.css" />
     <style>
       .perfil-card {
         background-color: var(--painel);
@@ -87,7 +87,7 @@
       </div>
       <nav class="menu">
         <a href="cadastro.html">Cadastro</a>
-        <a href="login.html">Entrar</a>
+        <a href="/login">Entrar</a>
         <a href="perfil.html">Perfil</a>
         <span class="bandeira" aria-label="Português do Brasil"></span>
       </nav>
@@ -101,28 +101,28 @@
         <p class="sub">Veja e acompanhe seus dados de atleta.</p>
 
         <div class="perfil-card">
-          <div class="perfil-avatar"></div>
+          <div class="perfil-avatar" id="perfil-avatar"></div>
           <div class="perfil-nome"></div>
 
           <div class="perfil-linha">
             <span class="perfil-label">Nome</span>
-            <span class="perfil-valor"></span>
+            <span class="perfil-valor" id="perfil-nome"></span>
           </div>
           <div class="perfil-linha">
             <span class="perfil-label">E-mail</span>
-            <span class="perfil-valor"></span>
+            <span class="perfil-valor" id="perfil-email"></span>
           </div>
           <div class="perfil-linha">
             <span class="perfil-label">Peso</span>
-            <span class="perfil-valor"></span>
+            <span class="perfil-valor" id="perfil-peso"></span>
           </div>
           <div class="perfil-linha">
             <span class="perfil-label">Altura</span>
-            <span class="perfil-valor"></span>
+            <span class="perfil-valor" id="perfil-altura"></span>
           </div>
           <div class="perfil-linha">
             <span class="perfil-label">Nascimento</span>
-            <span class="perfil-valor"></span>
+            <span class="perfil-valor" id="perfil-nascimento"></span>
           </div>
 
           <div class="perfil-acoes">
@@ -135,17 +135,6 @@
       <div class="foto"></div>
     </main>
 
-    <footer class="footer">
-      <div class="logo">ST<span class="a">A</span>TRI</div>
-      <nav>
-        <a href="#">Recursos</a>
-        <a href="#">Historia</a>
-        <a href="#">Sobre</a>
-      </nav>
-      <div class="social">
-        <a href="#"><span class="icone ig"></span> Instagram</a>
-        <a href="#"><span class="icone in"></span> Linkedin</a>
-      </div>
-    </footer>
+    <script type="module" src="../js/profile.js"></script>
   </body>
 </html>

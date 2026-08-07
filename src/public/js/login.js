@@ -12,7 +12,7 @@ form.addEventListener("submit", async (event) => { //ao clicar em entrar executa
     try {
         const result = await login(email, password); //chamando a api (api.js) 
         localStorage.setItem("token", result.token)
-        window.location.href = "/dashboard"
+        window.location.href = "/profile"
     } catch (error) {
         errorMessage.textContent = error.message;
 
