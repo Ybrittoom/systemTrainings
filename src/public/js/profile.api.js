@@ -14,4 +14,6 @@ async function getProfile() {
     return await response.json();
 }
 
+//CRIAR A FUNÇAO PUTPROFILE AQUI
+
 export default getProfile

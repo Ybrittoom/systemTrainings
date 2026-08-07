@@ -13,7 +13,7 @@ class AuthService {
             [email] // esse array substitui o $1
         );
 
-        if (result.rows.length === 0){
+        if (result.rows.length === 0) {
             throw new Error("Usuario não encontrado!")
         }
 
@@ -23,17 +23,17 @@ class AuthService {
             password,
             user.password_user
         );
-        
-        if(!correctPassword) {
+
+        if (!correctPassword) {
             throw new Error("Senha Incorreta!!")
         }
         //gerando o token
         const token = jwt.sign(
             //isso é o payload, informaçoes que voce quer guardar
-            {id:user.id_user},
+            { id: user.id_user },
             process.env.JWT_SECRET,
             {
-                expiresIn:"24h"
+                expiresIn: "24h"
             }
         );
 
@@ -47,17 +47,9 @@ class AuthService {
         };
     }
 
-    async getFirstLetterName (id,name) {
-        if (!name) {
-            throw new Error("Por Favor, preencha todos os dados")
-        }
-
-        const querySQL = await pool.query()
-    }
-
     async register(name, email, password, birth_date, weight, height) {//lembra de passar para o controller
         //verificando se os dados foi preenchidos corretamente
-        if (!name || !email || !password || !birth_date || !weight || !height) { 
+        if (!name || !email || !password || !birth_date || !weight || !height) {
             throw new Error("Por favor , preencha todos os dados!")
         };
 
@@ -80,7 +72,7 @@ class AuthService {
 
         //CRIPTOGRAFAR SENHA 
         const passwordHash = await bcrypt.hash(password, 10)
-        
+
 
         //salvando os dados 
         const result = await pool.query(`
