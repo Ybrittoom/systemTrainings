@@ -1,0 +1,61 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-overlay.ativo {
+  display: flex;
+}
+
+.modal {
+  background-color: var(--painel);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px 32px;
+  position: relative;
+}
+
+.modal-titulo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--branco);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--cinza);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-fechar:hover {
+  color: var(--vermelho);
+}
+
+.modal-botoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-botoes .botao {
+  flex: 1;
+  margin-top: 0;
+}

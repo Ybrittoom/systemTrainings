@@ -1,142 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>STATRI | Perfil</title>
-    <link rel="stylesheet" href="/css/login.css" />
-    <style>
-      .perfil-card {
-        background-color: var(--painel);
-        border: 1px solid var(--borda);
-        border-radius: 8px;
-        padding: 28px 32px;
-        text-align: left;
-        margin-top: 28px;
-      }
-      .perfil-avatar {
-        width: 96px;
-        height: 96px;
-        border-radius: 50%;
-        background: linear-gradient(160deg, #3a3a3a 0%, #1f1f1f 60%, #2b2b2b 100%);
-        border: 3px solid var(--vermelho);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 36px;
-        font-weight: bold;
-        color: var(--branco);
-        margin: 0 auto 20px;
-      }
-      .perfil-nome {
-        font-size: 24px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 6px;
-      }
-      .perfil-esporte {
-        font-size: 14px;
-        color: var(--cinza);
-        text-align: center;
-        margin-bottom: 24px;
-      }
-      .perfil-linha {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--borda);
-      }
-      .perfil-linha:last-child {
-        border-bottom: none;
-      }
-      .perfil-label {
-        font-size: 12px;
-        color: var(--cinza);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      .perfil-valor {
-        font-size: 15px;
-        color: var(--branco);
-        font-weight: 500;
-      }
-      .perfil-acoes {
-        display: flex;
-        gap: 12px;
-        margin-top: 24px;
-      }
-      .perfil-acoes .botao {
-        flex: 1;
-        margin-top: 0;
-      }
-      .botao-secundario {
-        background-color: transparent;
-        border: 1px solid var(--borda);
-      }
-      .botao-secundario:hover {
-        background-color: var(--preto-2);
-      }
-    </style>
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="logo">
-        ST<span class="a">A</span>TRI
-        <small>performance through precision</small>
-      </div>
-      <nav class="menu">
-        <a href="cadastro.html">Cadastro</a>
-        <a href="/login">Entrar</a>
-        <a href="perfil.html">Perfil</a>
-        <span class="bandeira" aria-label="Português do Brasil"></span>
-      </nav>
-    </header>
 
-    <main class="hero">
-      <div class="foto"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STATRI | Perfil</title>
+  <link rel="stylesheet" href="/css/login.css" />
+  <style>
+    .perfil-card {
+      background-color: var(--painel);
+      border: 1px solid var(--borda);
+      border-radius: 8px;
+      padding: 28px 32px;
+      text-align: left;
+      margin-top: 28px;
+    }
 
-      <section class="centro">
-        <h1>Seu perfil</h1>
-        <p class="sub">Veja e acompanhe seus dados de atleta.</p>
+    .perfil-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(160deg, #3a3a3a 0%, #1f1f1f 60%, #2b2b2b 100%);
+      border: 3px solid var(--vermelho);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: bold;
+      color: var(--branco);
+      margin: 0 auto 20px;
+    }
 
-        <div class="perfil-card">
-          <div class="perfil-avatar" id="perfil-avatar"></div>
-          <div class="perfil-nome"></div>
+    .perfil-nome {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 6px;
+    }
 
-          <div class="perfil-linha">
-            <span class="perfil-label">Nome</span>
-            <span class="perfil-valor" id="perfil-nome"></span>
-          </div>
-          <div class="perfil-linha">
-            <span class="perfil-label">E-mail</span>
-            <span class="perfil-valor" id="perfil-email"></span>
-          </div>
-          <div class="perfil-linha">
-            <span class="perfil-label">Peso</span>
-            <span class="perfil-valor" id="perfil-peso"></span>
-          </div>
-          <div class="perfil-linha">
-            <span class="perfil-label">Altura</span>
-            <span class="perfil-valor" id="perfil-altura"></span>
-          </div>
-          <div class="perfil-linha">
-            <span class="perfil-label">Nascimento</span>
-            <span class="perfil-valor" id="perfil-nascimento"></span>
-          </div>
+    .perfil-esporte {
+      font-size: 14px;
+      color: var(--cinza);
+      text-align: center;
+      margin-bottom: 24px;
+    }
 
-          <div class="perfil-acoes">
-            <button class="botao" type="button">Editar perfil</button>
-            <button class="botao botao-secundario" type="button">Sair</button>
-          </div>
+    .perfil-linha {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .perfil-linha:last-child {
+      border-bottom: none;
+    }
+
+    .perfil-label {
+      font-size: 12px;
+      color: var(--cinza);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .perfil-valor {
+      font-size: 15px;
+      color: var(--branco);
+      font-weight: 500;
+    }
+
+    .perfil-acoes {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .perfil-acoes .botao {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    .botao-secundario {
+      background-color: transparent;
+      border: 1px solid var(--borda);
+    }
+
+    .botao-secundario:hover {
+      background-color: var(--preto-2);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="logo">
+      ST<span class="a">A</span>TRI
+      <small>performance through precision</small>
+    </div>
+    <nav class="menu">
+      <a href="cadastro.html">Cadastro</a>
+      <a href="/login">Entrar</a>
+      <a href="perfil.html">Perfil</a>
+      <span class="bandeira" aria-label="Português do Brasil"></span>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="foto"></div>
+
+    <section class="centro">
+      <h1>Seu perfil</h1>
+      <p class="sub">Veja e acompanhe seus dados de atleta.</p>
+
+      <div class="perfil-card">
+        <div class="perfil-avatar" id="perfil-avatar"></div>
+        <div class="perfil-nome"></div>
+
+        <div class="perfil-linha">
+          <span class="perfil-label">Nome</span>
+          <span class="perfil-valor" id="perfil-nome"></span>
         </div>
-      </section>
+        <div class="perfil-linha">
+          <span class="perfil-label">E-mail</span>
+          <span class="perfil-valor" id="perfil-email"></span>
+        </div>
+        <div class="perfil-linha">
+          <span class="perfil-label">Peso</span>
+          <span class="perfil-valor" id="perfil-peso"></span>
+        </div>
+        <div class="perfil-linha">
+          <span class="perfil-label">Altura</span>
+          <span class="perfil-valor" id="perfil-altura"></span>
+        </div>
+        <div class="perfil-linha">
+          <span class="perfil-label">Nascimento</span>
+          <span class="perfil-valor" id="perfil-nascimento"></span>
+        </div>
 
-      <!--criar o modal aqui para editar o profile-->
+        <div class="perfil-acoes">
+          <button class="botao" type="button" id="btnEditarPerfil">Editar perfil</button>
+          <button class="botao botao-secundario" type="button">Sair</button>
+        </div>
+      </div>
+    </section>
 
-      <div class="foto"></div>
-    </main>
+    <!--criar o modal aqui para editar o profile-->
+    <!-- MODAL DE EDIÇÃO -->
+    <div class="modal-overlay" id="modalOverlay" style="display: none;">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+        <button class="modal-fechar" id="btnFechar" type="button" aria-label="Fechar">&times;</button>
+        <h2 class="modal-titulo" id="modalTitulo">Editar perfil</h2>
 
-    <script type="module" src="../js/profile.js"></script>
-  </body>
+        <form id="form" class="form">
+          <div class="campo">
+            <label for="editNome">Nome</label>
+            <input type="text" id="editNome" name="nome" required />
+          </div>
+
+          <div class="campo">
+            <label for="editEmail">E-mail</label>
+            <input type="email" id="editEmail" name="email" required />
+          </div>
+
+          <div class="linha">
+            <div class="campo">
+              <label for="editPeso">Peso (kg)</label>
+              <input type="number" id="editPeso" name="peso" step="0.1" min="1" required />
+            </div>
+            <div class="campo">
+              <label for="editAltura">Altura (m)</label>
+              <input type="number" id="editAltura" name="altura" step="0.01" min="0.1" required />
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="editNascimento">Nascimento</label>
+            <input type="date" id="editNascimento" name="nascimento" required />
+          </div>
+
+          <div class="modal-botoes">
+            <button class="botao" type="submit">Salvar alterações</button>
+            <button class="botao botao-secundario" type="button" id="btnCancelar">Cancelar</button>
+          </div>
+          <p id="errorMessage" style="color: red; font-size: 20px;"></p>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="foto"></div>
+  </main>
+
+  <script type="module" src="../js/profile.js"></script>
+</body>
+
 </html>
