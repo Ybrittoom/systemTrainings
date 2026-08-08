@@ -1,4 +1,4 @@
-import {getProfile, editProfile } from "./profile.api.js";
+import { getProfile, editProfile } from "./profile.api.js";
 import formatDate from "./utils.js"
 
 const user = await getProfile()
@@ -33,7 +33,7 @@ const elements = {
     idModal: document.getElementById("modalOverlay"),
     buttonEditProfile: document.getElementById("btnEditarPerfil"),
     buttonCloseModal: document.getElementById("btnFechar"),
-    
+
     //campos e inputs
     nameInput: document.getElementById("editNome"),
     emailInput: document.getElementById('editEmail'),
@@ -44,7 +44,14 @@ const elements = {
 
 //fechar e abrir modal
 elements.buttonEditProfile?.addEventListener('click', () => {
-    elements.idModal.style.display = "block"
+    elements.nameInput.value = user.name;
+        elements.emailInput.value = user.email;
+        elements.weightInput.value = user.weight;
+        elements.heightInput.value = user.height;
+        elements.birthDate.value = user.birth_date.split("T")[0]
+
+    elements.idModal.style.display = "flex"
+
 })
 
 elements.buttonCloseModal.addEventListener('click', () => {
@@ -62,8 +69,18 @@ elements.form.addEventListener('submit', async (event) => {
             elements.weightInput.value,
             elements.heightInput.value,
             elements.birthDate.value
-        ) 
-        
+        )
+
+        nameUser.textContent = result.user.name
+        perfilEmail.textContent = result.user.email
+        perfilPeso.textContent = result.user.weight
+        perfilAltura.textContent = result.user.height
+        perfilNascimento.textContent = formatDate(result.user.birth_date)
+        firstLetterUser.textContent = result.user.name.charAt(0).toUpperCase()
+
+        elements.erroMessage.textContent = "" //limpa erro antigo, se tinha
+        elements.idModal.style.display = "none" //fecha o modal
+
     } catch (error) {
         elements.erroMessage.textContent = error.message
     }

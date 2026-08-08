@@ -1,34 +1,96 @@
+/* ---------- MODAL DE EDIÇÃO DE PERFIL (100% CSS, sem depender do JS) ---------- */
+
+/* Overlay: cobre a tela toda, centraliza o modal e embaça o fundo.
+   Fica escondido por padrão com visibility/opacity — assim funciona
+   tanto se o JS usar classe .ativo quanto style.display = "flex"/"block". */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: none;
+  z-index: 9999;
+
+  /* centralização à prova de falhas */
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: 20px;
+  padding: 16px;
+
+  /* fundo escuro + embaçado */
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
+
+  /* estado fechado */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.modal-overlay.ativo {
-  display: flex;
+/* estado aberto: qualquer um destes serve */
+.modal-overlay.ativo,
+.modal-overlay.aberto,
+.modal-overlay.open,
+.modal-overlay.show,
+.modal-overlay[style*="flex"],
+.modal-overlay[style*="block"],
+body.modal-aberto .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
+/* fallback extra de blur (caso o navegador ignore backdrop-filter) */
+body.modal-aberto .topbar,
+body.modal-aberto .hero,
+body.modal-aberto .footer {
+  filter: blur(6px);
+}
+
+.topbar,
+.hero,
+.footer {
+  transition: filter 0.25s ease;
+}
+
+/* trava o scroll do fundo */
+body.modal-aberto {
+  overflow: hidden;
+}
+
+/* Caixa interna do modal */
 .modal {
-  background-color: var(--painel);
-  border: 1px solid var(--borda);
-  border-radius: 8px;
+  background-color: var(--painel, #1e1e1e);
+  border: 1px solid var(--borda, #333);
+  border-radius: 12px;
+
   width: 100%;
   max-width: 480px;
   max-height: 90vh;
   overflow-y: auto;
+
   padding: 28px 32px;
   position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+
+  /* pequena animação de entrada */
+  transform: translateY(12px) scale(0.97);
+  transition: transform 0.25s ease;
+}
+
+.modal-overlay.ativo .modal,
+.modal-overlay.aberto .modal,
+.modal-overlay.open .modal,
+.modal-overlay.show .modal,
+.modal-overlay[style*="flex"] .modal,
+.modal-overlay[style*="block"] .modal,
+body.modal-aberto .modal {
+  transform: translateY(0) scale(1);
 }
 
 .modal-titulo {
   font-size: 22px;
   font-weight: bold;
-  color: var(--branco);
+  color: var(--branco, #fff);
   margin-bottom: 24px;
   text-align: center;
 }
@@ -39,14 +101,15 @@
   right: 20px;
   background: none;
   border: none;
-  color: var(--cinza);
+  color: var(--cinza, #888);
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .modal-fechar:hover {
-  color: var(--vermelho);
+  color: var(--vermelho, #ff4d4d);
 }
 
 .modal-botoes {
@@ -58,4 +121,15 @@
 .modal-botoes .botao {
   flex: 1;
   margin-top: 0;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .modal {
+    padding: 20px 16px;
+  }
+
+  .modal-botoes {
+    flex-direction: column;
+  }
 }
