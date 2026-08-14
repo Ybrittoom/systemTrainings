@@ -1,7 +1,7 @@
 import { getProfile, editProfile } from "./profile.api.js";
 import formatDate from "./utils.js"
 
-const user = await getProfile()
+let user;
 
 const firstLetterUser = document.getElementById("perfil-avatar")
 const nameUser = document.getElementById("perfil-nome")
@@ -10,12 +10,25 @@ const perfilPeso = document.getElementById("perfil-peso")
 const perfilAltura = document.getElementById("perfil-altura")
 const perfilNascimento = document.getElementById("perfil-nascimento")
 
+const token = localStorage.getItem("token")
 
-nameUser.textContent = user.name
-perfilEmail.textContent = user.email
-perfilPeso.textContent = user.weight
-perfilAltura.textContent = user.height
-perfilNascimento.textContent = formatDate(user.birth_date)
+if(!token) {
+    window.location.href = "/login"
+}
+
+try {
+    user = await getProfile()
+    
+    nameUser.textContent = user.name
+    perfilEmail.textContent = user.email
+    perfilPeso.textContent = user.weight
+    perfilAltura.textContent = user.height
+    perfilNascimento.textContent = formatDate(user.birth_date)
+} catch (error) {
+    localStorage.removeItem("token")
+    window.location.href = "/login"
+}
+
 
 //mostrando a primeira letra do nome do usuario
 //showing the first letter of the username
@@ -82,6 +95,7 @@ elements.form.addEventListener('submit', async (event) => {
         elements.idModal.style.display = "none" //fecha o modal
 
     } catch (error) {
+        
         elements.erroMessage.textContent = error.message
     }
 })
