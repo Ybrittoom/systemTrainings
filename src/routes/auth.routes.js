@@ -2,6 +2,7 @@ import { Router } from "express";
 import AuthController from "../controller/authController.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
 import profileController from "../controller/profileController.js";
+import trainingController from "../controller/trainingController.js";
 
 const router = Router();
 
@@ -14,5 +15,8 @@ router.get("/profile", authMiddleware ,profileController.getProfile)
 router.put("/profile", authMiddleware, profileController.updateProfile)
 //rota para mudar senha 
 router.put("/password", authMiddleware, profileController.updatePassword)
+
+//rota para treinos
+router.get("/trainings", authMiddleware, trainingController.getTraining)
 
 export default router;
