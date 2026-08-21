@@ -15,6 +15,47 @@ class TrainingController {
             })
         }
     }
+
+    //codigo da inserir um treino
+    async postTraining(req, res) {
+        try {
+            const userId = req.user.id
+
+            const {
+                title_sport,
+                id_sport,
+                distance_trainings,
+                duration_trainings,
+                pace_trainings,
+                speed_trainings,
+                calories_trainings,
+                intensity_trainings,
+                notes_trainings,
+                training_date
+            } = req.body
+
+            //levando tudo pronto para o service, somente aqui pode acessar o body da req
+            const result = await trainingService.postTrainings(
+                userId,
+                title_sport,
+                id_sport,
+                distance_trainings,
+                duration_trainings,
+                pace_trainings,
+                speed_trainings,
+                calories_trainings,
+                intensity_trainings,
+                notes_trainings,
+                training_date
+            )
+
+            res.status(201).json(result)
+        } catch (error) {
+            return res.status(400).json({
+                message: error.message
+            })
+        }
+    }
 }
 
 export default new TrainingController();

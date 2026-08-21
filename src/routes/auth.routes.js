@@ -18,5 +18,6 @@ router.put("/password", authMiddleware, profileController.updatePassword)
 
 //rota para treinos
 router.get("/trainings", authMiddleware, trainingController.getTraining)
+router.post("/trainings-post", authMiddleware, trainingController.postTraining)
 
 export default router;
