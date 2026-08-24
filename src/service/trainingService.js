@@ -82,6 +82,24 @@ class TrainingService {
                 training_date
             ]
         );
+
+        const training = result.rows[0];
+
+        return {
+            message: "Treino cadastrado com sucesso",
+            training: {
+                title_sport: training.title_sport,
+                distance_trainings: training.distance_trainings,
+                duration_trainings: training.duration_trainings,
+                pace_trainings: training.pace_trainings,
+                speed_trainings: training.speed_trainings,
+                calories_trainings: training.calories_trainings,
+                intensity_trainings: training.intensity_trainings,
+                notes_trainings: training.notes_trainings,
+                training_date: training.training_date,
+                created_at: training.created_at
+            }
+        }
     }
 
 }
