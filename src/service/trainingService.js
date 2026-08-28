@@ -33,7 +33,7 @@ class TrainingService {
     }
 
     //comando para inserir um treino
-    async postTraining(
+    async postTrainings(
         userId,
         title_sport,
         id_sport,

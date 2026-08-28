@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>STATRI | Histórico de Treinos</title>
+    <link rel="stylesheet" href="statri.css" />
+    <link rel="stylesheet" href="perfil.css" />
+    <link rel="stylesheet" href="modalProfile.css" />
+    <link rel="stylesheet" href="trainings.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo">
+        ST<span class="a">A</span>TRI
+        <small>performance through precision</small>
+      </div>
+      <nav class="menu">
+        <a href="cadastro.html">Cadastro</a>
+        <a href="login.html">Entrar</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="treinos.html">Treinos</a>
+        <span class="bandeira" aria-label="Português do Brasil"></span>
+      </nav>
+    </header>
+
+    <main class="treinos-main">
+      <section class="treinos-centro">
+        <h1>Histórico de treinos</h1>
+        <p class="sub">Acompanhe todos os seus treinos registrados.</p>
+
+        <div class="treinos-acoes">
+          <button class="botao treinos-btn-add" type="button" id="btnAddTreino">
+            + Adicionar treino
+          </button>
+        </div>
+
+        <div class="treinos-lista" id="listaTreinos"></div>
+
+        <p class="treinos-vazio" id="msgVazia" hidden>
+          Nenhum treino registrado ainda. Clique em "Adicionar treino" para começar.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="logo">ST<span class="a">A</span>TRI</div>
+      <nav>
+        <a href="#">Recursos</a>
+        <a href="#">Historia</a>
+        <a href="#">Sobre</a>
+      </nav>
+      <div class="social">
+        <a href="#"><span class="icone ig"></span> Instagram</a>
+        <a href="#"><span class="icone in"></span> Linkedin</a>
+      </div>
+    </footer>
+
+    <!-- MODAL DE NOVO TREINO -->
+    <div class="modal-overlay" id="modalTreino">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTreinoTitulo">
+        <button class="modal-fechar" id="btnFecharTreino" type="button" aria-label="Fechar">&times;</button>
+        <h2 class="modal-titulo" id="modalTreinoTitulo">Registrar treino</h2>
+
+        <form id="formTreino" class="form">
+          <div class="campo">
+            <label for="title_sport">Título / Esporte</label>
+            <input type="text" id="title_sport" name="title_sport" placeholder="Ex.: Ciclismo longo" required />
+          </div>
+
+          <div class="linha">
+            <div class="campo">
+              <label for="distance_trainings">Distância (km)</label>
+              <input type="number" id="distance_trainings" name="distance_trainings" step="0.01" min="0" required />
+            </div>
+            <div class="campo">
+              <label for="duration_trainings">Duração (min)</label>
+              <input type="number" id="duration_trainings" name="duration_trainings" step="1" min="1" required />
+            </div>
+          </div>
+
+          <div class="linha">
+            <div class="campo">
+              <label for="pace_trainings">Pace (min/km)</label>
+              <input type="text" id="pace_trainings" name="pace_trainings" placeholder="Ex.: 4:30" required />
+            </div>
+            <div class="campo">
+              <label for="speed_trainings">Velocidade (km/h)</label>
+              <input type="number" id="speed_trainings" name="speed_trainings" step="0.1" min="0" required />
+            </div>
+          </div>
+
+          <div class="linha">
+            <div class="campo">
+              <label for="calories_trainings">Calorias (kcal)</label>
+              <input type="number" id="calories_trainings" name="calories_trainings" step="1" min="0" required />
+            </div>
+            <div class="campo">
+              <label for="intensity_trainings">Intensidade</label>
+              <select id="intensity_trainings" name="intensity_trainings" required>
+                <option value="Leve">Leve</option>
+                <option value="Moderada">Moderada</option>
+                <option value="Alta">Alta</option>
+                <option value="Máxima">Máxima</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="training_date">Data do treino</label>
+            <input type="date" id="training_date" name="training_date" required />
+          </div>
+
+          <div class="campo">
+            <label for="notes_trainings">Notas</label>
+            <input type="text" id="notes_trainings" name="notes_trainings" placeholder="Observações do treino" />
+          </div>
+
+          <div class="modal-botoes">
+            <button class="botao" type="submit">Salvar treino</button>
+            <button class="botao botao-secundario" type="button" id="btnCancelarTreino">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

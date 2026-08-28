@@ -1,0 +1,121 @@
+/* STATRI - Histórico de treinos */
+.treinos-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: var(--preto);
+  padding: 40px 24px 56px;
+}
+
+.treinos-centro {
+  width: min(100%, 720px);
+  text-align: center;
+}
+
+.treinos-centro h1 {
+  font-size: 34px;
+  line-height: 1.25;
+}
+
+.treinos-centro .sub {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--branco);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.treinos-acoes {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.treinos-btn-add {
+  width: auto;
+  padding: 15px 32px;
+}
+
+/* ---------- CARDS DE TREINO ---------- */
+.treinos-lista {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.treino-card {
+  background-color: var(--painel);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+.treino-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.treino-titulo {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--vermelho);
+  letter-spacing: 0.5px;
+}
+
+.treino-data {
+  font-size: 13px;
+  color: var(--cinza);
+  white-space: nowrap;
+}
+
+.treino-corpo {
+  margin-top: 10px;
+}
+
+.treino-linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(58, 58, 58, 0.5);
+}
+
+.treino-linha:last-child {
+  border-bottom: none;
+}
+
+.treino-label {
+  font-size: 12px;
+  color: var(--cinza);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.treino-valor {
+  font-size: 15px;
+  color: var(--branco);
+  text-align: right;
+}
+
+.treinos-vazio {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--cinza);
+}
+
+@media (max-width: 520px) {
+  .treinos-main {
+    padding: 28px 14px 40px;
+  }
+
+  .treino-card {
+    padding: 16px;
+  }
+}
