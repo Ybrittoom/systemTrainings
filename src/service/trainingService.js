@@ -12,13 +12,10 @@ class TrainingService {
             ]
         );
 
-        if (result.rows.length === 0) {
-            throw new Error("Treinos de usuario nao encontrado")
-        }
+        //lista vazia é normal
+        //o .map() transforma cada linha do banco do mesmo formatinho de objeto
 
-        const training = result.rows[0];
-
-        return {
+        return result.rows.map((training) => ({
             title_sport: training.title_sport,
             distance_trainings: training.distance_trainings,
             duration_trainings: training.duration_trainings,
@@ -29,7 +26,9 @@ class TrainingService {
             notes_trainings: training.notes_trainings,
             training_date: training.training_date,
             created_at: training.created_at
-        }
+        }))
+        
+        
     }
 
     //comando para inserir um treino

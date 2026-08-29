@@ -33,5 +33,12 @@ router.get("/profile", (req, res) => {
     )
 })
 
+//criando a rota /trainings
+router.get("/trainings", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "..", "views", "trainings.html")
+    )
+})
+
 
 export default router;
