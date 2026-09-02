@@ -19,3 +19,26 @@ async function getTrainings() {
 
     return data;
 }
+
+async function postTraining(training) {
+    const token = localStorage.getItem("token")
+
+    const response = await fetch(`${API_URL}/trainings-post`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(training)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || "Erro ao cadastrar treino!")
+    }
+
+    return data
+}
+
+export {getTrainings, postTraining}
