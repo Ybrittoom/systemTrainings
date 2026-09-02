@@ -61,6 +61,17 @@
         <h2 class="modal-titulo" id="modalTreinoTitulo">Registrar treino</h2>
 
         <form id="formTreino" class="form">
+
+           <div class="campo">
+            <label for="id_sport">Esporte</label>
+            <!-- TEMPORARIO: essas opçoes deveriam vir do banco (tabela sports) via um GET /sports -->
+            <select id="id_sport" name="id_sport" required>
+              <option value="1">Corrida</option>
+              <option value="2">Ciclismo</option>
+              <option value="3">Natação</option>
+            </select>
+          </div>
+
           <div class="campo">
             <label for="title_sport">Título / Esporte</label>
             <input type="text" id="title_sport" name="title_sport" placeholder="Ex.: Ciclismo longo" required />
@@ -98,7 +109,7 @@
               <select id="intensity_trainings" name="intensity_trainings" required>
                 <option value="1">Leve</option>
                 <option value="2">Moderada</option>
-                <option value="3">Alta</option>
+                <option value="3">Intensa</option>
                 <!--verificar se vou colocar maxima-->
               </select>
             </div>
