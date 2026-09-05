@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8081/apt/auth";
+const API_URL = "http://localhost:8081/api/auth";
 
 //buscando todos os treinos do usuario logado 
 async function getTrainings() {
