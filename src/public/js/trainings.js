@@ -74,3 +74,47 @@ elements.btnAddTreino.addEventListener("click", () => {
     elements.errorMessage.textContent = ""
     elements.modalTreino.style.display = "flex"
 })
+
+function fecharModal() {
+    elements.modalTreino.style.display = "none";
+}
+
+
+elements.btnFecharTreino.addEventListener("click", fecharModal)
+elements.btnCancelarTreino.addEventListener("click", fecharModal)
+
+window.addEventListener("click", (event) => {
+    if(event.target === elements.modalTreino) {
+        fecharModal()
+    }
+})
+
+//enviar o novo formulario para o back
+elements.formTreino.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    elements.errorMessage.textContent = "";
+
+    const formData = new FormData(elements.formTreino);
+
+    //controi o objeto corretamente para o envio pra API, alem de ter os tipos corretos
+    const novoTreino = {
+        id_sport: Number(formData.get("id_sport")),
+        title_sport: formData.get("title_sport"),
+        distance_trainings: Number(formData.get("distance_trainings")),
+        duration_trainings: Number(formData.get("duration_trainings")),
+        pace_trainings: formData.get("pace_trainings"),
+        speed_trainings: Number(formData.get("speed_trainings")),
+        calories_trainings: Number(formData.get("calories_trainings")),
+        intensity_trainings: Number(formData.get("intensity_trainings")),
+        training_date: formData.get("training_date"),
+        notes_trainings: formData.get("notes_trainings") || null
+    }
+
+    try {
+        await postTraining(novoTreino)
+        fecharModal()
+        await carregarTreinos()
+    } catch (error) {
+        elements.errorMessage.textContent = error.message || "Erro ao salvar o treino. Tente novamente.";
+    }
+})
