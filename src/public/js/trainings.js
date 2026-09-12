@@ -1,10 +1,10 @@
-import {getTrainings, postTraining} from "./training.api.js";
+import { getTrainings, postTraining } from "./training.api.js";
 import formatDate from "./utils.js";
 
 const token = localStorage.getItem("token");
 
 
-if(!token) {
+if (!token) {
     window.location.href = '/login'; //caso nao tiver o token ele vai pro login direto 
 }
 
@@ -27,7 +27,7 @@ function listarTreinos(treinos) {
     elements.listaTreinos.innerHTML = ""
 
     //caso estiver vazia a lista ele nn mostra nada
-    if(treinos.length === 0) {
+    if (treinos.length === 0) {
         elements.msgVazia.hidden = false
         return
     }
@@ -84,7 +84,7 @@ elements.btnFecharTreino.addEventListener("click", fecharModal)
 elements.btnCancelarTreino.addEventListener("click", fecharModal)
 
 window.addEventListener("click", (event) => {
-    if(event.target === elements.modalTreino) {
+    if (event.target === elements.modalTreino) {
         fecharModal()
     }
 })
@@ -100,15 +100,15 @@ elements.formTreino.addEventListener("submit", async (event) => {
     const novoTreino = {
         id_sport: Number(formData.get("id_sport")),
         title_sport: formData.get("title_sport"),
-        distance_trainings: Number(formData.get("distance_trainings")),
-        duration_trainings: Number(formData.get("duration_trainings")),
-        pace_trainings: formData.get("pace_trainings"),
-        speed_trainings: Number(formData.get("speed_trainings")),
+        distance_trainings: String(formData.get("distance_trainings")),
+        duration_trainings: `00:${String(formData.get("duration_trainings")).padStart(2, '0')}:00`, // Converte minutos do input em "00:MM:00"
+        pace_trainings: String(formData.get("pace_trainings")),
+        speed_trainings: String(formData.get("speed_trainings")),
         calories_trainings: Number(formData.get("calories_trainings")),
-        intensity_trainings: Number(formData.get("intensity_trainings")),
-        training_date: formData.get("training_date"),
+        intensity_trainings: formData.get("intensity_trainings"),
+        training_date: new Date(formData.get("training_date")).toISOString(),
         notes_trainings: formData.get("notes_trainings") || null
-    }
+    };
 
     try {
         await postTraining(novoTreino)

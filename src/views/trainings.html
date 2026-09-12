@@ -66,9 +66,9 @@
             <label for="id_sport">Esporte</label>
             <!-- TEMPORARIO: essas opçoes deveriam vir do banco (tabela sports) via um GET /sports -->
             <select id="id_sport" name="id_sport" required>
-              <option value="1">Corrida</option>
-              <option value="2">Ciclismo</option>
-              <option value="3">Natação</option>
+              <option value="leve">Corrida</option>
+              <option value="moderada">Ciclismo</option>
+              <option value="intensa">Natação</option>
             </select>
           </div>
 
@@ -92,10 +92,6 @@
             <div class="campo">
               <label for="pace_trainings">Pace (min/km)</label>
               <input type="text" id="pace_trainings" name="pace_trainings" placeholder="Ex.: 4:30" required />
-            </div>
-            <div class="campo">
-              <label for="speed_trainings">Velocidade (km/h)</label>
-              <input type="number" id="speed_trainings" name="speed_trainings" step="0.1" min="0" required />
             </div>
           </div>
 
