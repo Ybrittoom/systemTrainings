@@ -1,3 +1,4 @@
+//trainingService.js
 import pool from "../config/database.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -45,7 +46,7 @@ class TrainingService {
         notes_trainings,
         training_date
     ) {
-        if (!title_sport || !id_sport || !distance_trainings || !duration_trainings || !pace_trainings || !speed_trainings || !calories_trainings || !intensity_trainings || !notes_trainings || !training_date) {
+        if (!title_sport || !id_sport || !distance_trainings || !duration_trainings || !pace_trainings || !speed_trainings || !calories_trainings || !intensity_trainings || !training_date) {
             throw new Error("Por favor, preencha todos os dados")
         }
 

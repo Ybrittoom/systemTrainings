@@ -1,4 +1,8 @@
-/* STATRI - estilo base (cores padrão do sistema) */
+
+/* =========================================
+   STATRI - LOGIN RESPONSIVO
+   ========================================= */
+
 :root {
   --preto: #111111;
   --preto-2: #1c1c1c;
@@ -16,6 +20,11 @@
   padding: 0;
 }
 
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--preto-2);
@@ -23,19 +32,25 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* ---------- HEADER ---------- */
+/* =========================================
+   HEADER
+   ========================================= */
+
 .topbar {
   background-color: var(--preto);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 28px;
+  gap: 16px;
+  padding: 14px clamp(12px, 3vw, 28px);
+  flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 30px;
+  font-size: clamp(22px, 3vw, 30px);
   font-weight: bold;
   letter-spacing: 2px;
   line-height: 1;
@@ -51,75 +66,130 @@ body {
   font-weight: normal;
   letter-spacing: 1px;
   color: var(--cinza);
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .menu {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 18px;
 }
 
 .menu a {
   color: var(--branco);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .menu a:hover {
   color: var(--vermelho);
 }
 
+.bandeiraBR {
+  display: block;
+  width: auto;
+  height: 20px;
+  object-fit: contain;
+}
 
+/* =========================================
+   LAYOUT PRINCIPAL
+   ========================================= */
 
-/* ---------- LAYOUT PRINCIPAL ---------- */
+/*
+   As três colunas continuam lado a lado
+   em qualquer largura de tela.
+*/
 .hero {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
+
+  /* Fotos laterais + login central */
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 2.5fr) minmax(0, 0.85fr);
+
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
   background-color: var(--preto);
 }
 
+/* =========================================
+   FOTOS LATERAIS
+   ========================================= */
+
 .foto {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
   background-color: var(--painel);
-  background-image: linear-gradient(160deg, #3a3a3a 0%, #1f1f1f 60%, #2b2b2b 100%);
-  min-height: 380px;
 }
 
+.imgCorrida {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /*
+    Preenche toda a lateral sem deformar a foto.
+    Pode cortar um pouco das bordas para manter
+    a proporção correta.
+  */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================================
+   ÁREA CENTRAL DO LOGIN
+   ========================================= */
+
 .centro {
-  padding: 40px 32px 56px;
-  text-align: center;
+  min-width: 0;
+  width: 100%;
+  padding: clamp(20px, 4vw, 48px) clamp(12px, 3vw, 48px);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: stretch;
+
+  text-align: center;
+  background-color: var(--preto);
 }
 
 .centro h1 {
-  font-size: 34px;
+  font-size: clamp(19px, 2.7vw, 38px);
   line-height: 1.25;
+  overflow-wrap: break-word;
 }
 
 .centro .sub {
-  font-size: 16px;
+  font-size: clamp(11px, 1.3vw, 17px);
   font-weight: bold;
   color: var(--branco);
   margin-top: 16px;
   line-height: 1.5;
 }
 
-/* ---------- FORMULÁRIO ---------- */
+/* =========================================
+   FORMULÁRIO
+   ========================================= */
+
 .form {
-  margin-top: 28px;
+  width: 100%;
+  margin-top: clamp(18px, 3vw, 30px);
   text-align: left;
 }
 
 .campo {
+  width: 100%;
   margin-bottom: 14px;
 }
 
 .campo label {
   display: block;
-  font-size: 12px;
+  font-size: clamp(10px, 1.1vw, 13px);
   color: var(--cinza);
   margin-bottom: 6px;
   text-transform: uppercase;
@@ -128,13 +198,20 @@ body {
 
 .campo input,
 .campo select {
+  display: block;
   width: 100%;
-  padding: 11px 12px;
+  min-width: 0;
+  padding: clamp(9px, 1.1vw, 14px) 12px;
+
   background-color: var(--preto-2);
   border: 1px solid var(--borda);
-  border-radius: 4px;
+  border-radius: 5px;
   color: var(--branco);
-  font-size: 15px;
+  font-size: clamp(12px, 1.3vw, 16px);
+}
+
+.campo input::placeholder {
+  color: #777777;
 }
 
 .campo input:focus,
@@ -150,21 +227,19 @@ body {
 
 .linha .campo {
   flex: 1;
+  min-width: 0;
 }
 
 .opcoes {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 13px;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  font-size: clamp(11px, 1.2vw, 14px);
   color: var(--cinza);
   margin: 4px 0 18px;
-}
-
-.opcoes label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .opcoes a {
@@ -173,9 +248,11 @@ body {
 }
 
 .aviso {
-  font-size: 13px;
+  font-size: clamp(11px, 1.2vw, 15px);
   color: var(--branco);
   margin-top: 22px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
 }
 
 .aviso a {
@@ -186,45 +263,51 @@ body {
 .botao {
   display: block;
   width: 100%;
+  min-width: 0;
   margin-top: 12px;
-  padding: 15px;
+  padding: clamp(11px, 1.3vw, 16px);
+
   background-color: var(--vermelho);
   color: var(--branco);
   border: none;
-  border-radius: 4px;
-  font-size: 18px;
+  border-radius: 5px;
+
+  font-size: clamp(13px, 1.6vw, 20px);
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
   text-align: center;
-  text-decoration: none;
 }
 
 .botao:hover {
   background-color: var(--vermelho-hover);
 }
 
-/* ---------- FOOTER ---------- */
+/* =========================================
+   FOOTER
+   ========================================= */
+
 .footer {
   background-color: var(--painel);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 34px 40px 60px;
+  padding: 30px clamp(14px, 4vw, 40px) 40px;
   flex-wrap: wrap;
 }
 
 .footer nav {
   display: flex;
-  gap: 44px;
+  gap: clamp(15px, 3vw, 44px);
+  flex-wrap: wrap;
 }
 
 .footer nav a,
 .social a {
   color: var(--branco);
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .footer nav a:hover,
@@ -247,6 +330,7 @@ body {
 .icone {
   width: 26px;
   height: 26px;
+  flex-shrink: 0;
   border-radius: 6px;
   display: inline-block;
 }
@@ -259,23 +343,134 @@ body {
   background: #0a66c2;
 }
 
-/* ---------- RESPONSIVO ---------- */
-@media (max-width: 900px) {
+/* =========================================
+   TELAS PEQUENAS
+   ========================================= */
+
+/*
+   IMPORTANTE:
+   Não usamos grid-template-columns: 1fr.
+   As imagens continuam nas laterais.
+*/
+@media (max-width: 600px) {
+  .topbar {
+    padding: 12px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .logo small {
+    font-size: 7px;
+  }
+
+  .menu {
+    gap: 10px;
+  }
+
+  .menu a {
+    font-size: 13px;
+  }
+
   .hero {
-    grid-template-columns: 1fr;
+    /*
+      Laterais estreitas e login mais largo.
+      As fotos nunca vão para cima ou para baixo.
+    */
+    grid-template-columns: minmax(48px, 0.7fr) minmax(0, 3.6fr) minmax(48px, 0.7fr);
   }
-  .foto {
-    min-height: 180px;
-  }
+
   .centro {
-    order: -1;
+    padding: 22px 8px 28px;
+  }
+
+  .centro h1 {
+    font-size: clamp(15px, 4.6vw, 25px);
+  }
+
+  .centro .sub {
+    font-size: clamp(10px, 2.7vw, 14px);
+    margin-top: 10px;
+  }
+
+  .form {
+    margin-top: 18px;
+  }
+
+  .campo {
+    margin-bottom: 11px;
+  }
+
+  .campo label {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .campo input {
+    padding: 10px 7px;
+    font-size: 12px;
+  }
+
+  .opcoes {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .botao {
+    padding: 11px 5px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  .aviso {
+    font-size: 10px;
+    margin-top: 15px;
+  }
+
+  .footer {
+    padding: 24px 12px 30px;
+    gap: 20px;
+  }
+
+  .footer nav {
+    gap: 12px;
+  }
+
+  .footer nav a,
+  .social a {
+    font-size: 12px;
   }
 }
 
-.imgCorrida {
-  width: 100%;
-}
+/* =========================================
+   CELULARES MUITO ESTREITOS
+   ========================================= */
 
-.bandeiraBR {
-  height: 20px;
+@media (max-width: 360px) {
+  .hero {
+    grid-template-columns: minmax(40px, 0.65fr) minmax(0, 3.7fr) minmax(40px, 0.65fr);
+  }
+
+  .centro {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .centro h1 {
+    font-size: 15px;
+  }
+
+  .centro .sub {
+    font-size: 10px;
+  }
+
+  .campo input {
+    padding: 9px 5px;
+    font-size: 11px;
+  }
+
+  .botao {
+    font-size: 11px;
+  }
 }

@@ -1,3 +1,4 @@
+//trainingController.js
 import trainingService from "../service/trainingService.js";
 
 class TrainingController {

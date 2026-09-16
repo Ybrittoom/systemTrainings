@@ -96,14 +96,26 @@ elements.formTreino.addEventListener("submit", async (event) => {
 
     const formData = new FormData(elements.formTreino);
 
+    //calcular a velocidade km/h
+    const distance = Number(formData.get("distance_trainings")) || 0;
+    const durationMinutes = Number(formData.get("duration_trainings")) || 0;
+
+    //calculo da velocidade em Km/h 
+    //distancia = minutos / 60;
+    const durationInHours = durationMinutes / 60;
+    const calculatedSpeed = durationInHours > 0 ? (distance / durationInHours) : 0;
+
     //controi o objeto corretamente para o envio pra API, alem de ter os tipos corretos
     const novoTreino = {
-        id_sport: Number(formData.get("id_sport")),
+       id_sport: Number(formData.get("id_sport")),
         title_sport: formData.get("title_sport"),
-        distance_trainings: String(formData.get("distance_trainings")),
-        duration_trainings: `00:${String(formData.get("duration_trainings")).padStart(2, '0')}:00`, // Converte minutos do input em "00:MM:00"
+        distance_trainings: String(distance),
+        duration_trainings: `00:${String(durationMinutes).padStart(2, '0')}:00`,
         pace_trainings: String(formData.get("pace_trainings")),
-        speed_trainings: String(formData.get("speed_trainings")),
+        
+        // nesse trem aq enviamos o valor calculado formatado com 2 casas decimais (ex: "12.55")
+        speed_trainings: calculatedSpeed.toFixed(2),
+        
         calories_trainings: Number(formData.get("calories_trainings")),
         intensity_trainings: formData.get("intensity_trainings"),
         training_date: new Date(formData.get("training_date")).toISOString(),

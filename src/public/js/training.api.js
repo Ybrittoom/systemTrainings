@@ -1,3 +1,4 @@
+//training.api.js
 const API_URL = "http://localhost:8081/api/auth";
 
 //buscando todos os treinos do usuario logado 
