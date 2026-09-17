@@ -6,11 +6,23 @@ import jwt from "jsonwebtoken";
 class TrainingService {
     async getTrainings(id) {
         const result = await pool.query(`
-            select * from trainings where id_user = $1    
-        `,
-            [
-                id
-            ]
+        select 
+            id_user,
+            id_sport,
+            title_sport,
+            distance_trainings,
+            duration_trainings::text, -- O "::text" força o Postgres a devolver uma String (ex: "00:23:00")
+            pace_trainings,
+            speed_trainings,
+            calories_trainings,
+            intensity_trainings,
+            notes_trainings,
+            training_date,
+            created_at
+        from trainings where id_user = $1    
+    `, [
+            id
+        ]
         );
 
         //lista vazia é normal
@@ -28,8 +40,8 @@ class TrainingService {
             training_date: training.training_date,
             created_at: training.created_at
         }))
-        
-        
+
+
     }
 
     //comando para inserir um treino
@@ -40,15 +52,33 @@ class TrainingService {
         distance_trainings,
         duration_trainings,
         pace_trainings,
-        speed_trainings,
         calories_trainings,
         intensity_trainings,
         notes_trainings,
         training_date
     ) {
-        if (!title_sport || !id_sport || !distance_trainings || !duration_trainings || !pace_trainings || !speed_trainings || !calories_trainings || !intensity_trainings || !training_date) {
-            throw new Error("Por favor, preencha todos os dados")
+
+        const distance = Number(distance_trainings) || 0;
+        const durationMinutes = Number(duration_trainings) || 0;
+        const durationInHours = durationMinutes / 60;
+        const speed_trainings = durationInHours > 0 ? (distance / durationInHours).toFixed(2) : "0.00";
+
+
+        if (!title_sport ||
+            !id_sport ||
+            !distance_trainings ||
+            !duration_trainings ||
+            !pace_trainings ||
+            !calories_trainings ||
+            !intensity_trainings ||
+            !training_date
+        ) {
+            throw new Error("Por favor, preencha todos os dados");
         }
+
+        //formatar a duraçao para o banco receber (ex: "00:24:00")
+        const formattedDuration = `00:${String(durationMinutes).padStart(2, '0')}:00`;
+
 
         const result = await pool.query(`
             insert into trainings (
@@ -73,7 +103,7 @@ class TrainingService {
                 id_sport,
                 title_sport,
                 distance_trainings,
-                duration_trainings,
+                formattedDuration,
                 pace_trainings,
                 speed_trainings,
                 calories_trainings,
