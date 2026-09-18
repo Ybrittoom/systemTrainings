@@ -1,6 +1,9 @@
 import "dotenv/config.js";
-import app from "./app.js";//recebendo a aplicaçao
 
-app.listen(8081, () => {
-    console.log("Servidor rodandooooo")
-})
+import app from "./app.js";
+
+const PORT = process.env.PORT || 8081;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
