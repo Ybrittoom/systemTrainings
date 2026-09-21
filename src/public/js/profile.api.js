@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8081/api/auth";
+const API_URL = "/api/auth";
 
 async function getProfile() {
     const token = localStorage.getItem("token")

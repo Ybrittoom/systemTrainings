@@ -1,6 +1,5 @@
 //training.api.js
-const API_URL = "http://localhost:8081/api/auth";
-
+const API_URL = "/api/auth";
 //buscando todos os treinos do usuario logado 
 async function getTrainings() {
     const token = localStorage.getItem("token")
