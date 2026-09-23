@@ -2,85 +2,289 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>STATRI | Cadastre-se</title>
-  <link rel="stylesheet" href="/css/login.css" />
+
+  <link rel="stylesheet" href="/css/cadastro.css">
+
+  <link rel="icon" type="image/png" href="/assets/img/Gemini_Generated_Image_l687twl687twl687.png">
 </head>
 
 <body>
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
+
   <header class="topbar">
+
     <div class="logo">
       ST<span class="a">A</span>TRI
-      <small>performance through precision</small>
+
+      <small>
+        performance through precision
+      </small>
     </div>
+
+
     <nav class="menu">
-      <a href="#">Sobre</a>
-      <a href="/login">Entrar</a>
-      <span class="bandeira" aria-label="Português do Brasil"><img src="/assets/img/brasil.png" alt="bandeiraBR" style="width: 29px;"></span>
+
+      <a href="#">
+        Sobre
+      </a>
+
+      <a href="/login">
+        Entrar
+      </a>
+
+      <span class="bandeira" aria-label="Português do Brasil">
+        <img src="/assets/img/brasil.png" alt="Bandeira do Brasil" class="bandeiraBR">
+      </span>
+
     </nav>
+
   </header>
 
+
+  <!-- =========================================
+       ÁREA PRINCIPAL
+       ========================================= -->
+
   <main class="hero">
-    <div class="foto"></div>
+
+
+    <!-- FOTO ESQUERDA -->
+
+    <div class="foto foto-esquerda">
+      <img src="/assets/img/20260628_093433.jpg" alt="Atleta durante corrida">
+    </div>
+
+
+    <!-- =====================================
+         CADASTRO
+         ===================================== -->
 
     <section class="centro">
-      <h1>Não apenas treine.<br />Supere-se.</h1>
-      <p class="sub">
-        Transforme seus dados de natação, bike e corrida em evolução real com
-        estatísticas de elite.
-      </p>
+
+
+      <!-- ===================================
+           BANNER DO TÍTULO
+           =================================== -->
+
+      <div class="titulo-banner">
+
+        <div class="titulo-overlay"></div>
+
+        <div class="titulo-conteudo">
+
+          <h1>
+            Não apenas treine.<br>
+            Supere-se.
+          </h1>
+
+          <p class="sub">
+            Transforme seus dados de natação, bike e corrida
+            em evolução real com estatísticas de elite.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================
+           FORMULÁRIO
+           =================================== -->
 
       <form class="form" id="form">
-        <div class="campo">
-          <label for="nome">Nome completo</label>
-          <input id="nome" type="text" placeholder="Seu nome" required />
+
+
+        <!-- NOME -->
+
+        <div class="campo campo-full">
+
+          <label for="nome">
+            Nome completo
+          </label>
+
+          <input id="nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required>
+
         </div>
-        <div class="campo">
-          <label for="email">E-mail</label>
-          <input id="email" type="email" placeholder="seu@email.com" required />
+
+
+        <!-- E-MAIL -->
+
+        <div class="campo campo-full">
+
+          <label for="email">
+            E-mail
+          </label>
+
+          <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
+
         </div>
-        <div class="linha">
+
+
+        <!-- =================================
+             DADOS COMPLEMENTARES
+             ================================= -->
+
+        <div class="dados-complementares">
+
+
+          <!-- SENHA -->
+
           <div class="campo">
-            <label for="senha">Senha</label>
-            <input id="senha" type="password" placeholder="••••••••" required />
+
+            <label for="senha">
+              Senha
+            </label>
+
+            <input id="senha" name="senha" type="password" placeholder="••••••••" autocomplete="new-password" required>
+
           </div>
+
+
+          <!-- DATA DE NASCIMENTO -->
+
           <div class="campo">
-            <label for="nascimento">Data Nascimento</label>
-            <input id="nascimento" type="date" required />
+
+            <label for="nascimento">
+              Data de nascimento
+            </label>
+
+            <input id="nascimento" name="nascimento" type="date" required>
+
           </div>
+
+
+          <!-- PESO -->
+
           <div class="campo">
-            <label for="peso">Peso</label>
-            <input id="peso" step="0.01"  type="number" placeholder="Ex: 70.5" />
+
+            <label for="peso">
+              Peso
+            </label>
+
+            <input id="peso" name="peso" type="number" step="0.01" min="0" placeholder="Ex: 70,5">
+
           </div>
+
+
+          <!-- ALTURA -->
+
           <div class="campo">
-            <label for="altura">Altura</label>
-            <input id="altura" step="0.01" type="number" placeholder="Ex: 1.80" />
+
+            <label for="altura">
+              Altura
+            </label>
+
+            <input id="altura" name="altura" type="number" step="0.01" min="0" placeholder="Ex: 1,80">
+
           </div>
+
         </div>
-        <p class="aviso">Ja é membro? <a href="/login">Acesse aqui</a></p>
-        <button class="botao" type="submit">Cadastre-se</button>
-        <p id="errorMessage"></p>
+
+
+        <!-- =================================
+             JÁ É MEMBRO
+             ================================= -->
+
+        <p class="aviso">
+
+          Já é membro?
+
+          <a href="/login">
+            Acesse aqui
+          </a>
+
+        </p>
+
+
+        <!-- =================================
+             BOTÃO
+             ================================= -->
+
+        <button class="botao" type="submit">
+          Cadastre-se
+        </button>
+
+
+        <!-- ERRO -->
+
+        <p id="errorMessage" class="error-message"></p>
+
       </form>
+
     </section>
 
-    <div class="foto"></div>
+
+    <!-- FOTO DIREITA -->
+
+    <div class="foto foto-direita">
+
+      <img src="/assets/img/IMG-20250126-WA0032.jpg" alt="Atleta pedalando">
+
+    </div>
+
   </main>
 
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+
   <footer class="footer">
-    <div class="logo">ST<span class="a">A</span>TRI</div>
-    <nav>
-      <a href="#">Recursos</a>
-      <a href="#">Historia</a>
-      <a href="#">Sobre</a>
-    </nav>
-    <div class="social">
-      <a href="#"><span class="icone ig"></span> Instagram</a>
-      <a href="#"><span class="icone in"></span> Linkedin</a>
+
+
+    <div class="logo">
+      ST<span class="a">A</span>TRI
     </div>
+
+
+    <nav>
+
+      <a href="#">
+        Recursos
+      </a>
+
+      <a href="#">
+        História
+      </a>
+
+      <a href="#">
+        Sobre
+      </a>
+
+    </nav>
+
+
+    <div class="social">
+
+      <a href="#">
+        <span class="icone ig"></span>
+        Instagram
+      </a>
+
+      <a href="#">
+        <span class="icone in"></span>
+        Linkedin
+      </a>
+
+    </div>
+
   </footer>
 
-  <script type="module" src="../js/cadastro.js"></script>
+
+  <!-- =========================================
+       JAVASCRIPT
+       ========================================= -->
+
+  <script type="module" src="/js/cadastro.js"></script>
+
 </body>
 
 </html>
