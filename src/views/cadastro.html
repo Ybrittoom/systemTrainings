@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,9 +12,12 @@
   <link rel="stylesheet" href="/css/cadastro.css">
 
   <link rel="icon" type="image/png" href="/assets/img/Gemini_Generated_Image_l687twl687twl687.png">
+
 </head>
 
+
 <body>
+
 
   <!-- =========================================
        HEADER
@@ -22,11 +26,13 @@
   <header class="topbar">
 
     <div class="logo">
+
       ST<span class="a">A</span>TRI
 
       <small>
         performance through precision
       </small>
+
     </div>
 
 
@@ -41,12 +47,15 @@
       </a>
 
       <span class="bandeira" aria-label="Português do Brasil">
+
         <img src="/assets/img/brasil.png" alt="Bandeira do Brasil" class="bandeiraBR">
+
       </span>
 
     </nav>
 
   </header>
+
 
 
   <!-- =========================================
@@ -56,37 +65,41 @@
   <main class="hero">
 
 
-    <!-- FOTO ESQUERDA -->
+    <!-- =======================================
+         ÁREA DO CADASTRO
+         ======================================= -->
 
-    <div class="foto foto-esquerda">
-      <img src="/assets/img/20260628_093433.jpg" alt="Atleta durante corrida">
-    </div>
-
-
-    <!-- =====================================
-         CADASTRO
-         ===================================== -->
-
-    <section class="centro">
+    <section class="cadastro-container">
 
 
-      <!-- ===================================
-           BANNER DO TÍTULO
-           =================================== -->
+      <!-- =====================================
+           BANNER
+           ===================================== -->
 
       <div class="titulo-banner">
 
+
+        <!-- CAMADA ESCURA -->
+
         <div class="titulo-overlay"></div>
+
+
+        <!-- CONTEÚDO DO BANNER -->
 
         <div class="titulo-conteudo">
 
           <h1>
-            Não apenas treine.<br>
-            Supere-se.
+            Não apenas treine.
+            <br>
+            <span>Supere-se.</span>
           </h1>
 
-          <p class="sub">
-            Transforme seus dados de natação, bike e corrida
+
+          <div class="linha-vermelha"></div>
+
+
+          <p>
+            Transforme seus dados de desempenho
             em evolução real com estatísticas de elite.
           </p>
 
@@ -95,142 +108,169 @@
       </div>
 
 
-      <!-- ===================================
-           FORMULÁRIO
-           =================================== -->
 
-      <form class="form" id="form">
+      <!-- =====================================
+           CARD DO FORMULÁRIO
+           ===================================== -->
 
-
-        <!-- NOME -->
-
-        <div class="campo campo-full">
-
-          <label for="nome">
-            Nome completo
-          </label>
-
-          <input id="nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required>
-
-        </div>
+      <div class="form-card">
 
 
-        <!-- E-MAIL -->
-
-        <div class="campo campo-full">
-
-          <label for="email">
-            E-mail
-          </label>
-
-          <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
-
-        </div>
+        <form class="form" id="form">
 
 
-        <!-- =================================
-             DADOS COMPLEMENTARES
-             ================================= -->
+          <!-- =================================
+               NOME
+               ================================= -->
 
-        <div class="dados-complementares">
+          <div class="campo campo-full">
 
-
-          <!-- SENHA -->
-
-          <div class="campo">
-
-            <label for="senha">
-              Senha
+            <label for="nome">
+              Nome completo
             </label>
 
-            <input id="senha" name="senha" type="password" placeholder="••••••••" autocomplete="new-password" required>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required>
 
           </div>
 
 
-          <!-- DATA DE NASCIMENTO -->
 
-          <div class="campo">
+          <!-- =================================
+               E-MAIL
+               ================================= -->
 
-            <label for="nascimento">
-              Data de nascimento
+          <div class="campo campo-full">
+
+            <label for="email">
+              E-mail
             </label>
 
-            <input id="nascimento" name="nascimento" type="date" required>
+            <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
 
           </div>
 
 
-          <!-- PESO -->
 
-          <div class="campo">
+          <!-- =================================
+               SENHA / NASCIMENTO
+               ================================= -->
 
-            <label for="peso">
-              Peso
-            </label>
+          <div class="dados-linha">
 
-            <input id="peso" name="peso" type="number" step="0.01" min="0" placeholder="Ex: 70,5">
+
+            <!-- SENHA -->
+
+            <div class="campo">
+
+              <label for="senha">
+                Senha
+              </label>
+
+              <input id="senha" name="senha" type="password" placeholder="••••••••" autocomplete="new-password"
+                required>
+
+            </div>
+
+
+
+            <!-- DATA -->
+
+            <div class="campo">
+
+              <label for="nascimento">
+                Data de nascimento
+              </label>
+
+              <input id="nascimento" name="nascimento" type="date" required>
+
+            </div>
+
 
           </div>
 
 
-          <!-- ALTURA -->
 
-          <div class="campo">
+          <!-- =================================
+               PESO / ALTURA
+               ================================= -->
 
-            <label for="altura">
-              Altura
-            </label>
+          <div class="dados-linha">
 
-            <input id="altura" name="altura" type="number" step="0.01" min="0" placeholder="Ex: 1,80">
+
+            <!-- PESO -->
+
+            <div class="campo">
+
+              <label for="peso">
+                Peso
+              </label>
+
+              <input id="peso" name="peso" type="number" step="0.01" min="0" placeholder="Ex: 70,5">
+
+            </div>
+
+
+
+            <!-- ALTURA -->
+
+            <div class="campo">
+
+              <label for="altura">
+                Altura
+              </label>
+
+              <input id="altura" name="altura" type="number" step="0.01" min="0" placeholder="Ex: 1,80">
+
+            </div>
+
 
           </div>
 
-        </div>
 
 
-        <!-- =================================
-             JÁ É MEMBRO
-             ================================= -->
+          <!-- =================================
+               LOGIN
+               ================================= -->
 
-        <p class="aviso">
+          <p class="aviso">
 
-          Já é membro?
+            Já é membro?
 
-          <a href="/login">
-            Acesse aqui
-          </a>
+            <a href="/login">
+              Acesse aqui
+            </a>
 
-        </p>
-
-
-        <!-- =================================
-             BOTÃO
-             ================================= -->
-
-        <button class="botao" type="submit">
-          Cadastre-se
-        </button>
+          </p>
 
 
-        <!-- ERRO -->
 
-        <p id="errorMessage" class="error-message"></p>
+          <!-- =================================
+               BOTÃO
+               ================================= -->
 
-      </form>
+          <button class="botao" type="submit">
+            Cadastre-se
+          </button>
+
+
+
+          <!-- =================================
+               ERRO
+               ================================= -->
+
+          <p id="errorMessage" class="error-message"></p>
+
+
+        </form>
+
+      </div>
+
 
     </section>
 
 
-    <!-- FOTO DIREITA -->
-
-    <div class="foto foto-direita">
-
-      <img src="/assets/img/IMG-20250126-WA0032.jpg" alt="Atleta pedalando">
-
-    </div>
-
   </main>
+
 
 
   <!-- =========================================
@@ -241,8 +281,15 @@
 
 
     <div class="logo">
+
       ST<span class="a">A</span>TRI
+
+      <small>
+        performance through precision
+      </small>
+
     </div>
+
 
 
     <nav>
@@ -262,21 +309,33 @@
     </nav>
 
 
+
     <div class="social">
 
-      <a href="#">
-        <span class="icone ig"></span>
-        Instagram
-      </a>
 
       <a href="#">
-        <span class="icone in"></span>
-        Linkedin
+
+        <span class="icone ig"></span>
+
+        Instagram
+
       </a>
+
+
+      <a href="#">
+
+        <span class="icone in"></span>
+
+        Linkedin
+
+      </a>
+
 
     </div>
 
+
   </footer>
+
 
 
   <!-- =========================================
@@ -284,6 +343,7 @@
        ========================================= -->
 
   <script type="module" src="/js/cadastro.js"></script>
+
 
 </body>
 

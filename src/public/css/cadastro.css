@@ -1,20 +1,36 @@
 /* =========================================
    STATRI
    CADASTRO
+   DESIGN RESPONSIVO
+   ========================================= */
+
+
+/* =========================================
+   VARIÁVEIS
    ========================================= */
 
 :root {
+
     --preto: #111111;
-    --preto-2: #1c1c1c;
-    --painel: #262626;
+
+    --preto-2: #181818;
+
+    --preto-3: #202020;
+
+    --painel: #242424;
 
     --vermelho: #ef3e52;
+
     --vermelho-hover: #d92f42;
 
     --branco: #ffffff;
+
     --cinza: #b3b3b3;
 
-    --borda: #3a3a3a;
+    --cinza-2: #858585;
+
+    --borda: #363636;
+
 }
 
 
@@ -23,21 +39,29 @@
    ========================================= */
 
 * {
+
     box-sizing: border-box;
 
     margin: 0;
+
     padding: 0;
+
 }
 
 
 html {
+
     width: 100%;
+
     min-height: 100%;
+
 }
 
 
 body {
+
     width: 100%;
+
     min-height: 100vh;
 
     font-family:
@@ -45,14 +69,18 @@ body {
         Helvetica,
         sans-serif;
 
-    background-color: var(--preto-2);
+    background:
+        var(--preto);
 
-    color: var(--branco);
+    color:
+        var(--branco);
 
     display: flex;
+
     flex-direction: column;
 
     overflow-x: hidden;
+
 }
 
 
@@ -61,14 +89,19 @@ body {
    ========================================= */
 
 .topbar {
+
     width: 100%;
 
     min-height: 72px;
 
     padding:
-        14px clamp(16px, 3vw, 32px);
+        14px clamp(18px, 4vw, 45px);
 
-    background-color: var(--preto);
+    background:
+        var(--preto);
+
+    border-bottom:
+        1px solid #242424;
 
     display: flex;
 
@@ -77,192 +110,173 @@ body {
     justify-content: space-between;
 
     gap: 20px;
+
+    position: relative;
+
+    z-index: 10;
+
 }
 
 
 .logo {
+
     font-size:
-        clamp(24px, 3vw, 32px);
+        clamp(25px, 3vw, 32px);
 
     font-weight: bold;
 
     letter-spacing: 2px;
 
     line-height: 1;
+
 }
 
 
 .logo .a {
-    color: var(--vermelho);
+
+    color:
+        var(--vermelho);
+
 }
 
 
 .logo small {
+
     display: block;
 
-    margin-top: 4px;
+    margin-top: 5px;
 
-    font-size: 9px;
+    font-size: 8px;
 
     font-weight: normal;
 
     letter-spacing: 1px;
 
-    color: var(--cinza);
+    color:
+        var(--cinza);
+
 }
 
 
 .menu {
+
     display: flex;
 
     align-items: center;
 
     gap:
-        clamp(12px, 2vw, 24px);
+        clamp(12px, 2vw, 26px);
 
-    flex-shrink: 0;
 }
 
 
 .menu a {
-    color: var(--branco);
+
+    color:
+        var(--branco);
 
     text-decoration: none;
 
-    font-size: 16px;
+    font-size: 15px;
 
     transition:
         color 0.2s ease;
+
 }
 
 
 .menu a:hover {
-    color: var(--vermelho);
+
+    color:
+        var(--vermelho);
+
 }
 
 
 .bandeiraBR {
+
     display: block;
 
     width: auto;
 
     height: 20px;
 
-    object-fit: contain;
 }
 
 
 /* =========================================
    ÁREA PRINCIPAL
-   PC:
-
-   FOTO | CADASTRO | FOTO
    ========================================= */
 
 .hero {
+
+    width: 100%;
+
     flex: 1;
 
-    width: 100%;
+    display: flex;
 
-    min-width: 0;
+    justify-content: center;
 
-    display: grid;
+    align-items: flex-start;
 
-    grid-template-columns:
-        minmax(0, 1fr) minmax(500px, 1.35fr) minmax(0, 1fr);
-
-    align-items: stretch;
-
-    background-color: var(--preto);
-}
-
-
-/* =========================================
-   FOTOS LATERAIS
-   ========================================= */
-
-.foto {
-    position: relative;
-
-    width: 100%;
-
-    height: 100%;
-
-    min-width: 0;
-
-    min-height: 0;
-
-    overflow: hidden;
-
-    background-color: var(--painel);
-}
-
-
-.foto img {
-    display: block;
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    object-position: center;
-}
-
-
-/* =========================================
-   ÁREA CENTRAL
-   ========================================= */
-
-.centro {
-    width: 100%;
-
-    min-width: 0;
+    background:
+        var(--preto);
 
     padding:
-        clamp(35px, 4vw, 55px) clamp(30px, 4vw, 60px);
+        45px 20px 60px;
 
-    background-color: var(--preto);
+}
+
+
+/* =========================================
+   CONTAINER DO CADASTRO
+   ========================================= */
+
+.cadastro-container {
+
+    width: 100%;
+
+    max-width: 780px;
 
     display: flex;
 
     flex-direction: column;
 
-    justify-content: center;
+    gap: 24px;
 
-    align-items: stretch;
 }
 
 
 /* =========================================
-   BANNER DO TÍTULO
+   BANNER
    ========================================= */
 
 .titulo-banner {
+
     position: relative;
 
     width: 100%;
 
-    min-height: 220px;
+    min-height: 280px;
 
     overflow: hidden;
 
-    border-radius: 8px;
+    border-radius: 12px;
 
     /*
-    IMAGEM DE FUNDO
+    FOTO PARA DESKTOP
 
-    Estou utilizando uma das imagens
-    esportivas já existentes no projeto.
+    Você pode trocar depois por outra
+    imagem sem mexer no HTML.
   */
 
     background-image:
-        url("/assets/img/20260628_093433.jpg");
+        url("/assets/img/IMG-20250126-WA0032.jpg");
 
     background-size: cover;
 
-    background-position: center 45%;
+    background-position: center 42%;
 
     display: flex;
 
@@ -270,33 +284,35 @@ body {
 
     justify-content: center;
 
-    text-align: center;
 }
 
 
 /* =========================================
-   CAMADA ESCURA DA IMAGEM
+   CAMADA ESCURA
    ========================================= */
 
 .titulo-overlay {
+
     position: absolute;
 
     inset: 0;
 
     background:
-        linear-gradient(180deg,
-            rgba(0, 0, 0, 0.72),
-            rgba(0, 0, 0, 0.82));
+        linear-gradient(90deg,
+            rgba(0, 0, 0, 0.88),
+            rgba(0, 0, 0, 0.68));
 
     z-index: 1;
+
 }
 
 
 /* =========================================
-   TEXTO DO BANNER
+   CONTEÚDO DO BANNER
    ========================================= */
 
 .titulo-conteudo {
+
     position: relative;
 
     z-index: 2;
@@ -304,42 +320,90 @@ body {
     width: 100%;
 
     padding:
-        28px 24px;
+        45px clamp(25px, 5vw, 60px);
+
 }
 
 
 .titulo-conteudo h1 {
-    color: var(--branco);
+
+    color:
+        var(--branco);
 
     font-size:
-        clamp(28px, 3vw, 42px);
+        clamp(32px, 5vw, 52px);
 
-    line-height: 1.15;
+    line-height: 1.08;
 
     font-weight: 700;
 
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.7);
+    letter-spacing: -1px;
+
 }
 
 
-.titulo-conteudo .sub {
-    max-width: 650px;
+.titulo-conteudo h1 span {
+
+    color:
+        var(--vermelho);
+
+}
+
+
+.linha-vermelha {
+
+    width: 65px;
+
+    height: 4px;
 
     margin:
-        18px auto 0;
+        20px 0 17px;
 
-    color: var(--branco);
+    background:
+        var(--vermelho);
+
+    border-radius: 10px;
+
+}
+
+
+.titulo-conteudo p {
+
+    max-width: 570px;
+
+    color:
+        rgba(255, 255, 255, 0.92);
 
     font-size:
-        clamp(13px, 1.4vw, 17px);
-
-    font-weight: bold;
+        clamp(13px, 1.5vw, 17px);
 
     line-height: 1.5;
 
-    text-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+
+/* =========================================
+   CARD DO FORMULÁRIO
+   ========================================= */
+
+.form-card {
+
+    width: 100%;
+
+    padding:
+        clamp(24px, 4vw, 38px);
+
+    background:
+        var(--preto-2);
+
+    border:
+        1px solid var(--borda);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.28);
+
 }
 
 
@@ -348,9 +412,9 @@ body {
    ========================================= */
 
 .form {
+
     width: 100%;
 
-    margin-top: 28px;
 }
 
 
@@ -359,104 +423,127 @@ body {
    ========================================= */
 
 .campo {
+
     width: 100%;
 
     min-width: 0;
+
 }
 
 
 .campo-full {
-    margin-bottom: 16px;
+
+    margin-bottom: 18px;
+
 }
 
 
 .campo label {
+
     display: block;
 
     margin-bottom: 7px;
 
-    color: var(--cinza);
+    color:
+        #c9c9c9;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    font-weight: 500;
+    font-weight: 600;
 
     text-transform: uppercase;
 
     letter-spacing: 1px;
+
 }
 
 
 .campo input {
+
     display: block;
 
     width: 100%;
 
-    height: 54px;
+    height: 52px;
 
     padding:
         0 14px;
 
-    background-color: var(--preto-2);
+    background:
+        #151515;
 
     border:
-        1px solid var(--borda);
+        1px solid #3a3a3a;
 
     border-radius: 6px;
 
-    color: var(--branco);
+    color:
+        var(--branco);
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
-    font-size: 15px;
+    font-size: 14px;
 
     transition:
         border-color 0.2s ease,
+        background-color 0.2s ease,
         box-shadow 0.2s ease;
+
 }
 
 
 .campo input::placeholder {
-    color: #777777;
+
+    color:
+        #777777;
+
+}
+
+
+.campo input:hover {
+
+    border-color:
+        #4a4a4a;
+
 }
 
 
 .campo input:focus {
+
     outline: none;
 
-    border-color: var(--vermelho);
+    border-color:
+        var(--vermelho);
+
+    background:
+        #191919;
 
     box-shadow:
-        0 0 0 2px rgba(239, 62, 82, 0.12);
+        0 0 0 2px rgba(239, 62, 82, 0.10);
+
 }
 
 
 /* =========================================
-   DADOS COMPLEMENTARES
-
-   PC:
-   SENHA | DATA | PESO | ALTURA
+   DUAS COLUNAS
    ========================================= */
 
-.dados-complementares {
+.dados-linha {
+
     width: 100%;
 
     display: grid;
 
     grid-template-columns:
-        1fr 1.35fr 1fr 1fr;
+        minmax(0, 1fr) minmax(0, 1fr);
 
-    gap: 12px;
+    gap: 14px;
 
-    align-items: start;
-}
+    margin-bottom: 18px;
 
-
-.dados-complementares .campo {
-    min-width: 0;
 }
 
 
@@ -464,12 +551,31 @@ body {
    DATA
    ========================================= */
 
-.dados-complementares input[type="date"] {
+input[type="date"] {
+
     color-scheme: dark;
 
-    padding-left: 10px;
+}
 
-    padding-right: 8px;
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+
+    opacity: 0.75;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   NÚMEROS
+   ========================================= */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+
+    opacity: 0.7;
+
 }
 
 
@@ -478,27 +584,36 @@ body {
    ========================================= */
 
 .aviso {
-    margin-top: 22px;
 
-    color: var(--branco);
+    margin-top: 4px;
 
-    font-size: 14px;
+    color:
+        #d5d5d5;
+
+    font-size: 13px;
 
     line-height: 1.5;
+
 }
 
 
 .aviso a {
-    color: var(--vermelho);
+
+    color:
+        var(--vermelho);
 
     text-decoration: none;
 
     font-weight: 600;
+
 }
 
 
 .aviso a:hover {
-    color: var(--vermelho-hover);
+
+    color:
+        var(--vermelho-hover);
+
 }
 
 
@@ -507,20 +622,23 @@ body {
    ========================================= */
 
 .botao {
+
     display: block;
 
     width: 100%;
 
-    height: 56px;
+    height: 54px;
 
-    margin-top: 18px;
+    margin-top: 17px;
 
     padding:
         0 20px;
 
-    background-color: var(--vermelho);
+    background:
+        var(--vermelho);
 
-    color: var(--branco);
+    color:
+        var(--branco);
 
     border: none;
 
@@ -531,9 +649,9 @@ body {
         Helvetica,
         sans-serif;
 
-    font-size: 18px;
+    font-size: 16px;
 
-    font-weight: 500;
+    font-weight: 600;
 
     letter-spacing: 1px;
 
@@ -544,33 +662,41 @@ body {
     transition:
         background-color 0.2s ease,
         transform 0.1s ease;
+
 }
 
 
 .botao:hover {
-    background-color: var(--vermelho-hover);
+
+    background:
+        var(--vermelho-hover);
+
 }
 
 
 .botao:active {
-    transform: scale(0.99);
+
+    transform:
+        scale(0.99);
+
 }
 
 
 /* =========================================
-   MENSAGEM DE ERRO
+   ERRO
    ========================================= */
 
 .error-message {
+
     min-height: 18px;
 
-    margin-top: 8px;
+    margin-top: 9px;
 
-    color: var(--vermelho);
+    color:
+        var(--vermelho);
 
-    font-size: 13px;
+    font-size: 12px;
 
-    line-height: 1.4;
 }
 
 
@@ -579,12 +705,17 @@ body {
    ========================================= */
 
 .footer {
+
     width: 100%;
 
     padding:
-        30px clamp(16px, 4vw, 45px) 40px;
+        28px clamp(18px, 4vw, 45px) 35px;
 
-    background-color: var(--painel);
+    background:
+        var(--painel);
+
+    border-top:
+        1px solid #303030;
 
     display: flex;
 
@@ -595,181 +726,145 @@ body {
     gap: 30px;
 
     flex-wrap: wrap;
+
+}
+
+
+.footer .logo {
+
+    font-size: 24px;
+
 }
 
 
 .footer nav {
+
     display: flex;
 
     align-items: center;
 
     gap:
-        clamp(20px, 4vw, 45px);
+        clamp(18px, 4vw, 45px);
 
     flex-wrap: wrap;
+
 }
 
 
 .footer nav a,
 .social a {
-    color: var(--branco);
+
+    color:
+        var(--branco);
 
     text-decoration: none;
 
-    font-size: 15px;
+    font-size: 14px;
 
     transition:
         color 0.2s ease;
+
 }
 
 
 .footer nav a:hover,
 .social a:hover {
-    color: var(--vermelho);
+
+    color:
+        var(--vermelho);
+
 }
 
 
 .social {
+
     display: flex;
 
-    flex-direction: column;
+    gap: 15px;
 
-    gap: 12px;
 }
 
 
 .social a {
+
     display: flex;
 
     align-items: center;
 
-    gap: 12px;
+    gap: 8px;
+
 }
 
 
 .icone {
-    width: 26px;
 
-    height: 26px;
+    width: 25px;
 
-    flex-shrink: 0;
+    height: 25px;
+
+    display: inline-block;
 
     border-radius: 6px;
 
-    display: inline-block;
 }
 
 
 .icone.ig {
+
     background:
         linear-gradient(45deg,
             #f9ce34,
             #ee2a7b,
             #6228d7);
+
 }
 
 
 .icone.in {
-    background: #0a66c2;
+
+    background:
+        #0a66c2;
+
 }
 
 
 /* =========================================
-   TABLETS
+   TABLET
    ========================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 800px) {
 
     .hero {
-        grid-template-columns:
-            minmax(0, 0.7fr) minmax(520px, 1.5fr) minmax(0, 0.7fr);
+
+        padding:
+            35px 18px 50px;
+
     }
 
 
-    .centro {
-        padding:
-            35px 35px;
+    .cadastro-container {
+
+        max-width:
+            680px;
+
     }
 
 
     .titulo-banner {
-        min-height: 200px;
+
+        min-height:
+            250px;
+
     }
 
 
     .titulo-conteudo h1 {
-        font-size: 32px;
+
+        font-size:
+            clamp(30px, 6vw, 42px);
+
     }
 
-
-    .dados-complementares {
-        grid-template-columns:
-            1fr 1.3fr 1fr 1fr;
-
-        gap: 10px;
-    }
-
-
-    .campo input {
-        font-size: 14px;
-    }
-}
-
-
-/* =========================================
-   TABLET PEQUENO
-   ========================================= */
-
-@media (max-width: 900px) {
-
-    /*
-    Fotos desaparecem.
-  */
-
-    .hero {
-        display: block;
-
-        width: 100%;
-
-        background-color: var(--preto);
-    }
-
-
-    .foto {
-        display: none;
-    }
-
-
-    .centro {
-        width: 100%;
-
-        max-width: 720px;
-
-        min-height:
-            calc(100vh - 72px);
-
-        margin: 0 auto;
-
-        padding:
-            45px 35px 55px;
-    }
-
-
-    .titulo-banner {
-        min-height: 210px;
-    }
-
-
-    /*
-    2 colunas no tablet
-  */
-
-    .dados-complementares {
-        grid-template-columns:
-            1fr 1.35fr;
-
-        gap: 14px;
-    }
 }
 
 
@@ -779,181 +874,284 @@ body {
 
 @media (max-width: 600px) {
 
+
     /* =======================================
      HEADER
      ======================================= */
 
     .topbar {
-        min-height: 68px;
+
+        min-height:
+            68px;
 
         padding:
-            12px 16px;
+            11px 15px;
+
     }
 
 
     .logo {
-        font-size: 24px;
+
+        font-size:
+            23px;
+
     }
 
 
     .logo small {
-        font-size: 7px;
 
-        letter-spacing: 0.7px;
+        font-size:
+            6px;
+
+        letter-spacing:
+            0.7px;
+
     }
 
 
     .menu {
-        gap: 10px;
+
+        gap:
+            9px;
+
     }
 
 
     .menu a {
-        font-size: 13px;
+
+        font-size:
+            12px;
+
     }
 
 
     .bandeiraBR {
-        height: 20px;
+
+        height:
+            19px;
+
     }
 
 
     /* =======================================
-     ÁREA CENTRAL
+     ÁREA PRINCIPAL
      ======================================= */
 
-    .centro {
-        width: 100%;
+    .hero {
 
-        max-width: none;
-
-        min-height: auto;
+        width:
+            100%;
 
         padding:
-            25px 16px 45px;
+            20px 12px 40px;
+
+    }
+
+
+    .cadastro-container {
+
+        width:
+            100%;
+
+        max-width:
+            none;
+
+        gap:
+            18px;
+
     }
 
 
     /* =======================================
-     BANNER
+     BANNER MOBILE
+
+     FOTO DIFERENTE DO DESKTOP
      ======================================= */
 
     .titulo-banner {
-        width: 100%;
 
-        min-height: 205px;
+        min-height:
+            225px;
 
-        border-radius: 7px;
+        border-radius:
+            9px;
+
+        /*
+      FOTO PARA CELULAR
+
+      Diferente da foto usada no PC.
+    */
+
+        background-image:
+            url("/assets/img/20260628_093433.jpg");
 
         background-position:
             center center;
+
     }
 
 
+    /* =======================================
+     ESCURECIMENTO MOBILE
+     ======================================= */
+
+    .titulo-overlay {
+
+        background:
+            linear-gradient(180deg,
+                rgba(0, 0, 0, 0.66),
+                rgba(0, 0, 0, 0.86));
+
+    }
+
+
+    /* =======================================
+     TEXTO MOBILE
+     ======================================= */
+
     .titulo-conteudo {
+
         padding:
-            25px 16px;
+            28px 22px;
+
     }
 
 
     .titulo-conteudo h1 {
-        font-size:
-            clamp(25px, 7.5vw, 32px);
 
-        line-height: 1.12;
+        font-size:
+            clamp(28px, 8vw, 35px);
+
+        line-height:
+            1.08;
+
+        letter-spacing:
+            -0.5px;
+
     }
 
 
-    .titulo-conteudo .sub {
-        margin-top: 14px;
+    .linha-vermelha {
+
+        width:
+            48px;
+
+        height:
+            3px;
+
+        margin:
+            15px 0 13px;
+
+    }
+
+
+    .titulo-conteudo p {
 
         font-size:
-            clamp(11px, 3.5vw, 14px);
+            12px;
 
-        line-height: 1.45;
+        line-height:
+            1.45;
+
     }
 
 
     /* =======================================
-     FORMULÁRIO
+     CARD
      ======================================= */
 
-    .form {
-        margin-top: 24px;
+    .form-card {
+
+        padding:
+            22px 16px 24px;
+
+        border-radius:
+            9px;
+
     }
 
 
-    /*
-    Nome e e-mail continuam 100%.
-  */
+    /* =======================================
+     CAMPOS
+     ======================================= */
 
     .campo-full {
-        margin-bottom: 15px;
+
+        margin-bottom:
+            15px;
+
     }
 
 
     .campo label {
-        margin-bottom: 6px;
 
-        font-size: 10px;
+        font-size:
+            10px;
 
-        letter-spacing: 0.8px;
+        margin-bottom:
+            6px;
+
+        letter-spacing:
+            0.8px;
+
     }
 
 
     .campo input {
-        width: 100%;
 
-        height: 50px;
+        height:
+            50px;
 
         padding:
             0 11px;
 
-        font-size: 13px;
+        font-size:
+            13px;
+
     }
 
 
     /* =======================================
-     SENHA / DATA / PESO / ALTURA
-
-     2 COLUNAS
+     SENHA / DATA
+     PESO / ALTURA
      ======================================= */
 
-    .dados-complementares {
-        display: grid;
+    .dados-linha {
 
         grid-template-columns:
-            minmax(0, 1fr) minmax(0, 1.2fr);
+            minmax(0, 1fr) minmax(0, 1fr);
 
         gap:
-            12px;
+            10px;
 
-        width: 100%;
+        margin-bottom:
+            15px;
+
     }
 
 
-    .dados-complementares .campo {
-        width: 100%;
+    .dados-linha .campo input {
 
-        min-width: 0;
+        width:
+            100%;
+
+        min-width:
+            0;
+
     }
 
 
-    .dados-complementares input {
-        width: 100%;
+    input[type="date"] {
 
-        min-width: 0;
+        padding-left:
+            7px;
 
-        font-size: 12px;
-    }
+        padding-right:
+            5px;
 
+        font-size:
+            11px;
 
-    .dados-complementares input[type="date"] {
-        padding-left: 7px;
-
-        padding-right: 4px;
-
-        font-size: 11px;
     }
 
 
@@ -962,9 +1160,13 @@ body {
      ======================================= */
 
     .aviso {
-        margin-top: 20px;
 
-        font-size: 12px;
+        margin-top:
+            5px;
+
+        font-size:
+            11px;
+
     }
 
 
@@ -973,13 +1175,16 @@ body {
      ======================================= */
 
     .botao {
-        width: 100%;
 
-        height: 51px;
+        height:
+            51px;
 
-        margin-top: 16px;
+        margin-top:
+            15px;
 
-        font-size: 15px;
+        font-size:
+            14px;
+
     }
 
 
@@ -988,181 +1193,258 @@ body {
      ======================================= */
 
     .footer {
+
         padding:
-            25px 16px 35px;
+            25px 15px 30px;
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
 
-        gap: 24px;
+        gap:
+            22px;
+
     }
 
 
     .footer .logo {
-        font-size: 24px;
+
+        font-size:
+            23px;
+
     }
 
 
     .footer nav {
-        width: 100%;
 
-        gap: 18px;
+        width:
+            100%;
+
+        gap:
+            18px;
+
     }
 
 
     .footer nav a,
     .social a {
-        font-size: 12px;
+
+        font-size:
+            12px;
+
     }
+
+
+    .social {
+
+        flex-direction:
+            row;
+
+    }
+
 }
 
 
 /* =========================================
-   CELULARES PEQUENOS
+   CELULAR PEQUENO
    ========================================= */
 
 @media (max-width: 380px) {
 
+
     .topbar {
+
         padding:
-            11px 12px;
+            10px 12px;
+
     }
 
 
     .logo {
-        font-size: 21px;
+
+        font-size:
+            21px;
+
     }
 
 
     .logo small {
-        font-size: 6px;
+
+        font-size:
+            5.5px;
+
     }
 
 
     .menu {
-        gap: 7px;
+
+        gap:
+            7px;
+
     }
 
 
     .menu a {
-        font-size: 11px;
+
+        font-size:
+            11px;
+
     }
 
 
-    .centro {
+    .hero {
+
         padding:
-            20px 12px 35px;
+            16px 9px 35px;
+
     }
 
 
     .titulo-banner {
-        min-height: 190px;
+
+        min-height:
+            205px;
+
     }
 
 
     .titulo-conteudo {
+
         padding:
-            20px 12px;
+            23px 17px;
+
     }
 
 
     .titulo-conteudo h1 {
-        font-size: 23px;
+
+        font-size:
+            25px;
+
     }
 
 
-    .titulo-conteudo .sub {
-        font-size: 10px;
+    .titulo-conteudo p {
+
+        font-size:
+            10px;
+
     }
 
 
-    .form {
-        margin-top: 20px;
+    .form-card {
+
+        padding:
+            19px 13px 22px;
+
     }
 
 
     .campo input {
-        height: 47px;
 
-        font-size: 12px;
+        height:
+            47px;
+
+        font-size:
+            12px;
+
     }
 
 
-    .dados-complementares {
-        gap: 9px;
+    .dados-linha {
+
+        gap:
+            8px;
+
     }
 
 
-    .dados-complementares input[type="date"] {
-        font-size: 10px;
-    }
+    input[type="date"] {
 
+        font-size:
+            9px;
 
-    .aviso {
-        font-size: 11px;
     }
 
 
     .botao {
-        height: 48px;
 
-        font-size: 14px;
+        height:
+            48px;
+
+        font-size:
+            13px;
+
     }
+
 }
 
 
 /* =========================================
-   CELULARES MUITO PEQUENOS
+   CELULAR MUITO PEQUENO
    ========================================= */
 
 @media (max-width: 330px) {
 
-    .centro {
-        padding-left: 10px;
-
-        padding-right: 10px;
-    }
-
 
     .titulo-banner {
-        min-height: 180px;
+
+        min-height:
+            190px;
+
     }
 
 
     .titulo-conteudo h1 {
-        font-size: 21px;
+
+        font-size:
+            22px;
+
     }
 
 
-    .titulo-conteudo .sub {
-        font-size: 9px;
+    .titulo-conteudo p {
+
+        font-size:
+            9px;
+
     }
 
 
-    .dados-complementares {
-        grid-template-columns:
-            1fr 1fr;
+    .form-card {
 
-        gap: 8px;
+        padding:
+            17px 11px 20px;
+
     }
 
 
     .campo input {
-        height: 45px;
 
-        font-size: 11px;
+        height:
+            45px;
+
+        font-size:
+            11px;
+
     }
 
 
-    .dados-complementares input[type="date"] {
-        font-size: 9px;
+    .dados-linha {
+
+        gap:
+            7px;
+
     }
 
 
-    .botao {
-        height: 46px;
+    input[type="date"] {
 
-        font-size: 13px;
+        font-size:
+            8px;
+
     }
+
 }
