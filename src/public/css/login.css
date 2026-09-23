@@ -1,5 +1,6 @@
 /* =========================================
-   STATRI - LOGIN RESPONSIVO
+   STATRI - LOGIN
+   RESPONSIVO
    ========================================= */
 
 :root {
@@ -29,14 +30,20 @@ html {
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
+
   font-family: Arial, Helvetica, sans-serif;
+
   background-color: var(--preto-2);
   color: var(--branco);
-  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
+
   overflow-x: hidden;
 }
+
 
 /* =========================================
    HEADER
@@ -44,7 +51,6 @@ body {
 
 .topbar {
   width: 100%;
-  min-height: 72px;
 
   background-color: var(--preto);
 
@@ -52,14 +58,15 @@ body {
   align-items: center;
   justify-content: space-between;
 
-  gap: 16px;
+  padding: 14px clamp(16px, 3vw, 32px);
 
-  padding: 14px clamp(12px, 3vw, 28px);
+  min-height: 72px;
 }
 
 .logo {
-  font-size: clamp(22px, 3vw, 30px);
+  font-size: clamp(24px, 3vw, 32px);
   font-weight: bold;
+
   letter-spacing: 2px;
   line-height: 1;
 }
@@ -71,27 +78,31 @@ body {
 .logo small {
   display: block;
 
+  margin-top: 4px;
+
   font-size: 9px;
   font-weight: normal;
+
   letter-spacing: 1px;
 
   color: var(--cinza);
-
-  margin-top: 4px;
 }
 
 .menu {
   display: flex;
   align-items: center;
-  gap: clamp(10px, 2vw, 26px);
 
-  flex-shrink: 0;
+  gap: 20px;
 }
 
 .menu a {
   color: var(--branco);
+
   text-decoration: none;
-  font-size: 15px;
+
+  font-size: 16px;
+
+  transition: color 0.2s ease;
 }
 
 .menu a:hover {
@@ -107,8 +118,11 @@ body {
   object-fit: contain;
 }
 
+
 /* =========================================
-   LAYOUT PRINCIPAL
+   ÁREA PRINCIPAL
+   PC:
+   
    FOTO | LOGIN | FOTO
    ========================================= */
 
@@ -120,19 +134,16 @@ body {
 
   display: grid;
 
-  /*
-    Desktop:
-    Foto | Login | Foto
-  */
   grid-template-columns:
     minmax(0, 1fr)
-    minmax(420px, 1.2fr)
+    minmax(420px, 1.25fr)
     minmax(0, 1fr);
 
-  align-items: stretch;
-
   background-color: var(--preto);
+
+  align-items: stretch;
 }
+
 
 /* =========================================
    FOTOS
@@ -162,16 +173,20 @@ body {
   object-position: center center;
 }
 
+
 /* =========================================
-   LOGIN
+   LOGIN CENTRAL
    ========================================= */
 
 .centro {
   width: 100%;
   min-width: 0;
 
-  padding: clamp(20px, 4vw, 48px)
-           clamp(12px, 3vw, 48px);
+  padding:
+    clamp(30px, 5vw, 60px)
+    clamp(24px, 4vw, 55px);
+
+  background-color: var(--preto);
 
   display: flex;
   flex-direction: column;
@@ -180,28 +195,30 @@ body {
   align-items: stretch;
 
   text-align: center;
-
-  background-color: var(--preto);
 }
 
 .centro h1 {
-  font-size: clamp(19px, 2.7vw, 38px);
-  line-height: 1.25;
+  font-size: clamp(26px, 3vw, 40px);
+
+  line-height: 1.2;
+
+  color: var(--branco);
 
   overflow-wrap: break-word;
 }
 
 .centro .sub {
-  font-size: clamp(11px, 1.3vw, 17px);
+  margin-top: 16px;
+
+  font-size: clamp(14px, 1.5vw, 18px);
 
   font-weight: bold;
 
-  color: var(--branco);
-
-  margin-top: 16px;
-
   line-height: 1.5;
+
+  color: var(--branco);
 }
+
 
 /* =========================================
    FORMULÁRIO
@@ -210,7 +227,7 @@ body {
 .form {
   width: 100%;
 
-  margin-top: clamp(18px, 3vw, 30px);
+  margin-top: 30px;
 
   text-align: left;
 }
@@ -218,17 +235,17 @@ body {
 .campo {
   width: 100%;
 
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .campo label {
   display: block;
 
-  font-size: clamp(10px, 1.1vw, 13px);
+  margin-bottom: 7px;
+
+  font-size: 13px;
 
   color: var(--cinza);
-
-  margin-bottom: 6px;
 
   text-transform: uppercase;
 
@@ -242,7 +259,9 @@ body {
   width: 100%;
   min-width: 0;
 
-  padding: clamp(9px, 1.1vw, 14px) 12px;
+  height: 58px;
+
+  padding: 0 14px;
 
   background-color: var(--preto-2);
 
@@ -252,7 +271,13 @@ body {
 
   color: var(--branco);
 
-  font-size: clamp(12px, 1.3vw, 16px);
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 16px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .campo input::placeholder {
@@ -264,7 +289,10 @@ body {
   outline: none;
 
   border-color: var(--vermelho);
+
+  box-shadow: 0 0 0 2px rgba(239, 62, 82, 0.12);
 }
+
 
 /* =========================================
    LINHAS
@@ -272,16 +300,19 @@ body {
 
 .linha {
   display: flex;
+
   gap: 12px;
 }
 
 .linha .campo {
   flex: 1;
+
   min-width: 0;
 }
 
+
 /* =========================================
-   OPÇÕES
+   ESQUECI SENHA
    ========================================= */
 
 .opcoes {
@@ -295,18 +326,25 @@ body {
 
   gap: 8px;
 
-  font-size: clamp(11px, 1.2vw, 14px);
+  margin: 5px 0 18px;
+
+  font-size: 14px;
 
   color: var(--cinza);
-
-  margin: 4px 0 18px;
 }
 
 .opcoes a {
   color: var(--vermelho);
 
   text-decoration: none;
+
+  transition: color 0.2s ease;
 }
+
+.opcoes a:hover {
+  color: var(--vermelho-hover);
+}
+
 
 /* =========================================
    BOTÃO
@@ -316,11 +354,12 @@ body {
   display: block;
 
   width: 100%;
-  min-width: 0;
 
-  margin-top: 12px;
+  min-height: 58px;
 
-  padding: clamp(11px, 1.3vw, 16px);
+  margin-top: 10px;
+
+  padding: 12px 16px;
 
   background-color: var(--vermelho);
 
@@ -330,7 +369,11 @@ body {
 
   border-radius: 5px;
 
-  font-size: clamp(13px, 1.6vw, 20px);
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 19px;
+
+  font-weight: normal;
 
   letter-spacing: 1px;
 
@@ -339,24 +382,46 @@ body {
   cursor: pointer;
 
   text-align: center;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
 .botao:hover {
   background-color: var(--vermelho-hover);
 }
 
+.botao:active {
+  transform: scale(0.99);
+}
+
+
 /* =========================================
-   AVISO
+   MENSAGEM DE ERRO
+   ========================================= */
+
+#errorMessage {
+  margin-top: 10px;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   CADASTRO
    ========================================= */
 
 .aviso {
-  font-size: clamp(11px, 1.2vw, 15px);
+  margin-top: 24px;
 
-  color: var(--branco);
-
-  margin-top: 22px;
+  font-size: 14px;
 
   line-height: 1.5;
+
+  color: var(--branco);
 
   overflow-wrap: break-word;
 }
@@ -365,7 +430,14 @@ body {
   color: var(--vermelho);
 
   text-decoration: none;
+
+  transition: color 0.2s ease;
 }
+
+.aviso a:hover {
+  color: var(--vermelho-hover);
+}
+
 
 /* =========================================
    FOOTER
@@ -382,9 +454,9 @@ body {
 
   justify-content: space-between;
 
-  gap: 24px;
+  gap: 30px;
 
-  padding: 30px clamp(14px, 4vw, 40px) 40px;
+  padding: 30px clamp(16px, 4vw, 45px) 40px;
 
   flex-wrap: wrap;
 }
@@ -392,7 +464,9 @@ body {
 .footer nav {
   display: flex;
 
-  gap: clamp(15px, 3vw, 44px);
+  align-items: center;
+
+  gap: clamp(20px, 4vw, 45px);
 
   flex-wrap: wrap;
 }
@@ -403,7 +477,9 @@ body {
 
   text-decoration: none;
 
-  font-size: 14px;
+  font-size: 15px;
+
+  transition: color 0.2s ease;
 }
 
 .footer nav a:hover,
@@ -451,90 +527,83 @@ body {
   background: #0a66c2;
 }
 
+
 /* =========================================
    TABLETS
-   FOTO | LOGIN | FOTO
+   =========================================
+
+   A partir daqui as fotos desaparecem.
+
+   Fica:
+
+   LOGIN
    ========================================= */
 
 @media (max-width: 900px) {
 
   .hero {
-    /*
-      Continua:
-      FOTO | LOGIN | FOTO
+    display: block;
 
-      O login fica maior.
-    */
-    grid-template-columns:
-      minmax(65px, 0.18fr)
-      minmax(0, 1fr)
-      minmax(65px, 0.18fr);
+    width: 100%;
+
+    background-color: var(--preto);
   }
+
+  /*
+    Esconde completamente as fotos.
+    Elas não ocupam espaço.
+  */
 
   .foto {
-    width: 100%;
-    height: 100%;
-  }
-
-  .imagem-lateral {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center center;
+    display: none;
   }
 
   .centro {
     width: 100%;
 
-    padding: 35px 18px 45px;
+    max-width: 700px;
+
+    min-height: calc(100vh - 72px);
+
+    margin: 0 auto;
+
+    padding:
+      50px
+      clamp(24px, 6vw, 70px);
   }
 
   .centro h1 {
-    font-size: clamp(22px, 4vw, 32px);
-
-    line-height: 1.2;
+    font-size: clamp(28px, 5vw, 38px);
   }
 
   .centro .sub {
-    font-size: clamp(12px, 2vw, 16px);
-
-    margin-top: 14px;
+    font-size: clamp(14px, 2.5vw, 17px);
   }
 
   .form {
-    width: 100%;
-
-    margin-top: 25px;
-  }
-
-  .campo input,
-  .campo select {
-    width: 100%;
-
-    padding: 12px;
-  }
-
-  .botao {
-    width: 100%;
+    margin-top: 28px;
   }
 }
 
+
 /* =========================================
-   CELULARES
-   FOTO | LOGIN | FOTO
+   CELULAR
    ========================================= */
 
 @media (max-width: 600px) {
 
+  /* -------------------------------
+     HEADER
+     ------------------------------- */
+
   .topbar {
     min-height: 70px;
 
-    padding: 12px;
+    padding: 12px 16px;
   }
 
   .logo {
-    font-size: 24px;
+    font-size: 25px;
   }
 
   .logo small {
@@ -548,141 +617,259 @@ body {
   }
 
   .menu a {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .bandeiraBR {
     height: 20px;
   }
 
-  /*
-    CELULAR:
 
-    14% FOTO
-    72% LOGIN
-    14% FOTO
-  */
+  /* -------------------------------
+     LOGIN
+
+     SEM FOTOS
+     ------------------------------- */
 
   .hero {
-    grid-template-columns:
-      minmax(55px, 0.14fr)
-      minmax(0, 0.72fr)
-      minmax(55px, 0.14fr);
+    display: block;
+
+    width: 100%;
+
+    min-height: 0;
   }
 
   .foto {
-    height: 100%;
-  }
-
-  .imagem-lateral {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
+    display: none;
   }
 
   .centro {
-    padding: 32px 10px 38px;
+    width: 100%;
+
+    max-width: none;
+
+    min-height: calc(100vh - 70px);
+
+    margin: 0;
+
+    padding:
+      45px
+      18px
+      50px;
+
+    justify-content: center;
   }
 
-  .centro h1 {
-    font-size: clamp(17px, 4.8vw, 24px);
 
-    line-height: 1.22;
+  /* -------------------------------
+     TÍTULO
+     ------------------------------- */
+
+  .centro h1 {
+    font-size: clamp(24px, 7vw, 32px);
+
+    line-height: 1.2;
   }
 
   .centro .sub {
-    font-size: clamp(10px, 2.8vw, 14px);
+    font-size: clamp(12px, 3.8vw, 16px);
 
-    line-height: 1.4;
+    line-height: 1.45;
 
-    margin-top: 12px;
+    margin-top: 14px;
   }
 
+
+  /* -------------------------------
+     FORMULÁRIO
+     ------------------------------- */
+
   .form {
-    margin-top: 22px;
+    width: 100%;
+
+    margin-top: 28px;
   }
 
   .campo {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
   }
 
   .campo label {
-    font-size: 10px;
+    font-size: 11px;
 
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
 
-  .campo input {
+  .campo input,
+  .campo select {
     width: 100%;
 
-    height: 44px;
+    height: 52px;
 
-    padding: 8px 9px;
+    padding: 0 12px;
+
+    font-size: 14px;
+  }
+
+
+  /* -------------------------------
+     ESQUECI SENHA
+     ------------------------------- */
+
+  .opcoes {
+    margin-top: 4px;
+
+    margin-bottom: 17px;
 
     font-size: 12px;
   }
 
-  .opcoes {
-    font-size: 10px;
 
-    margin-top: 4px;
-
-    margin-bottom: 15px;
-  }
+  /* -------------------------------
+     BOTÃO
+     ------------------------------- */
 
   .botao {
     width: 100%;
 
+    min-height: 52px;
+
+    height: 52px;
+
+    padding: 10px;
+
+    font-size: 16px;
+  }
+
+
+  /* -------------------------------
+     CADASTRO
+     ------------------------------- */
+
+  .aviso {
+    margin-top: 20px;
+
+    font-size: 12px;
+  }
+
+
+  /* -------------------------------
+     FOOTER
+     ------------------------------- */
+
+  .footer {
+    width: 100%;
+
+    padding: 25px 16px 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 25px;
+  }
+
+  .footer .logo {
+    font-size: 24px;
+  }
+
+  .footer nav {
+    width: 100%;
+
+    display: flex;
+
+    gap: 20px;
+  }
+
+  .footer nav a,
+  .social a {
+    font-size: 13px;
+  }
+
+  .social {
+    gap: 12px;
+  }
+}
+
+
+/* =========================================
+   CELULARES PEQUENOS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .topbar {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .logo small {
+    font-size: 6px;
+  }
+
+  .menu a {
+    font-size: 12px;
+  }
+
+  .centro {
+    padding:
+      35px
+      14px
+      40px;
+  }
+
+  .centro h1 {
+    font-size: 22px;
+  }
+
+  .centro .sub {
+    font-size: 11px;
+  }
+
+  .campo input,
+  .campo select {
     height: 48px;
 
-    padding: 8px;
+    font-size: 13px;
+  }
+
+  .botao {
+    height: 48px;
+
+    min-height: 48px;
 
     font-size: 14px;
   }
 
   .aviso {
-    font-size: 10px;
-
-    margin-top: 16px;
-  }
-
-  .footer {
-    padding: 24px 12px 30px;
-
-    gap: 20px;
+    font-size: 11px;
   }
 
   .footer nav {
-    gap: 12px;
-  }
-
-  .footer nav a,
-  .social a {
-    font-size: 12px;
+    gap: 14px;
   }
 }
+
 
 /* =========================================
    CELULARES MUITO PEQUENOS
    ========================================= */
 
-@media (max-width: 380px) {
-
-  .hero {
-    grid-template-columns:
-      45px
-      minmax(0, 1fr)
-      45px;
-  }
+@media (max-width: 330px) {
 
   .centro {
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .centro h1 {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .centro .sub {
@@ -690,31 +877,14 @@ body {
   }
 
   .campo input {
-    height: 42px;
-
-    font-size: 11px;
+    height: 46px;
   }
 
   .botao {
-    height: 45px;
+    height: 46px;
 
-    font-size: 12px;
-  }
-}
+    min-height: 46px;
 
-/* =========================================
-   AJUSTE DO ENQUADRAMENTO DAS FOTOS
-   ========================================= */
-
-@media (max-width: 600px) {
-
-  /* Foto da corrida */
-  .hero .foto:first-child .imagem-lateral {
-    object-position: 30% center;
-  }
-
-  /* Foto da bike */
-  .hero .foto:last-child .imagem-lateral {
-    object-position: 70% center;
+    font-size: 13px;
   }
 }
