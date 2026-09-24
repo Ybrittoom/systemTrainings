@@ -3,54 +3,296 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>STATRI | Perfil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>STATRI | Meu Perfil</title>
+
   <link rel="stylesheet" href="/css/login.css" />
   <link rel="stylesheet" href="/css/modalProfile.css" />
+
   <style>
+    /* =====================================================
+       PERFIL - ESTRUTURA
+       ===================================================== */
+
+    .perfil-page {
+      background: var(--preto-2);
+    }
+
+    .perfil-hero {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(180px, 0.8fr)
+        minmax(500px, 1.4fr)
+        minmax(180px, 0.8fr);
+
+      background: var(--preto);
+
+      min-height: 650px;
+    }
+
+
+    /* =====================================================
+       FOTOS LATERAIS
+       ===================================================== */
+
+    .perfil-foto {
+      position: relative;
+
+      width: 100%;
+      height: 100%;
+
+      overflow: hidden;
+
+      background: var(--painel);
+    }
+
+    .perfil-foto::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to right,
+          rgba(17, 17, 17, 0.15),
+          rgba(17, 17, 17, 0.55)
+        );
+    }
+
+    .perfil-foto-direita::after {
+      background:
+        linear-gradient(
+          to left,
+          rgba(17, 17, 17, 0.15),
+          rgba(17, 17, 17, 0.55)
+        );
+    }
+
+    .perfil-foto img {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter: brightness(55%);
+
+      transition: transform 0.5s ease;
+    }
+
+    .perfil-foto:hover img {
+      transform: scale(1.03);
+    }
+
+
+    /* =====================================================
+       ÁREA CENTRAL
+       ===================================================== */
+
+    .perfil-centro {
+      width: 100%;
+      min-width: 0;
+
+      padding: 50px clamp(24px, 4vw, 55px);
+
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(239, 62, 82, 0.06),
+          transparent 40%
+        ),
+        var(--preto);
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+
+      text-align: center;
+    }
+
+
+    /* =====================================================
+       CABEÇALHO DO PERFIL
+       ===================================================== */
+
+    .perfil-header {
+      width: 100%;
+      max-width: 620px;
+
+      margin-bottom: 26px;
+    }
+
+    .perfil-header h1 {
+      font-size: clamp(28px, 3vw, 40px);
+
+      line-height: 1.15;
+
+      font-weight: 700;
+
+      color: var(--branco);
+    }
+
+    .perfil-header .sub {
+      margin-top: 10px;
+
+      font-size: clamp(13px, 1.3vw, 16px);
+
+      line-height: 1.5;
+
+      color: var(--cinza);
+    }
+
+
+    /* =====================================================
+       CARD
+       ===================================================== */
+
     .perfil-card {
-      background-color: var(--painel);
+      width: 100%;
+      max-width: 620px;
+
+      padding: 34px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #292929,
+          #202020
+        );
+
       border: 1px solid var(--borda);
-      border-radius: 8px;
-      padding: 28px 32px;
+
+      border-radius: 16px;
+
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
       text-align: left;
-      margin-top: 28px;
+    }
+
+
+    /* =====================================================
+       AVATAR
+       ===================================================== */
+
+    .perfil-avatar-container {
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      margin-bottom: 30px;
     }
 
     .perfil-avatar {
-      width: 96px;
-      height: 96px;
+      width: 112px;
+      height: 112px;
+
       border-radius: 50%;
-      background: linear-gradient(160deg, #3a3a3a 0%, #1f1f1f 60%, #2b2b2b 100%);
+
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #3a3a3a,
+          #171717
+        );
+
       border: 3px solid var(--vermelho);
+
       display: flex;
+
       align-items: center;
       justify-content: center;
-      font-size: 36px;
-      font-weight: bold;
+
+      font-size: 42px;
+
+      font-weight: 700;
+
       color: var(--branco);
-      margin: 0 auto 20px;
+
+      box-shadow:
+        0 0 0 6px rgba(239, 62, 82, 0.08),
+        0 10px 30px rgba(0, 0, 0, 0.4);
+
+      margin-bottom: 18px;
     }
 
     .perfil-nome {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: clamp(20px, 2vw, 25px);
+
+      font-weight: 700;
+
+      line-height: 1.25;
+
       text-align: center;
-      margin-bottom: 6px;
+
+      color: var(--branco);
     }
 
-    .perfil-esporte {
-      font-size: 14px;
+    .perfil-status {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      margin-top: 8px;
+
       color: var(--cinza);
-      text-align: center;
-      margin-bottom: 24px;
+
+      font-size: 12px;
+    }
+
+    .perfil-status::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #48d597;
+
+      box-shadow: 0 0 8px rgba(72, 213, 151, 0.7);
+    }
+
+
+    /* =====================================================
+       DADOS
+       ===================================================== */
+
+    .perfil-dados {
+      width: 100%;
+
+      border-top: 1px solid var(--borda);
+
+      border-bottom: 1px solid var(--borda);
     }
 
     .perfil-linha {
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      min-height: 68px;
+
       padding: 14px 0;
+
       border-bottom: 1px solid var(--borda);
     }
 
@@ -58,137 +300,715 @@
       border-bottom: none;
     }
 
+    .perfil-info {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 5px;
+
+      min-width: 0;
+    }
+
     .perfil-label {
-      font-size: 12px;
-      color: var(--cinza);
+      font-size: 11px;
+
+      color: #858585;
+
       text-transform: uppercase;
-      letter-spacing: 1px;
+
+      letter-spacing: 1.2px;
     }
 
     .perfil-valor {
       font-size: 15px;
+
       color: var(--branco);
+
       font-weight: 500;
+
+      overflow-wrap: anywhere;
+
+      text-align: right;
     }
 
-    .perfil-acoes {
-      display: flex;
+
+    /* =====================================================
+       DESTAQUES NUMÉRICOS
+       ===================================================== */
+
+    .perfil-metricas {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
       gap: 12px;
+
+      margin-top: 16px;
+    }
+
+    .perfil-metrica {
+      padding: 16px;
+
+      background: rgba(255, 255, 255, 0.025);
+
+      border: 1px solid var(--borda);
+
+      border-radius: 10px;
+    }
+
+    .perfil-metrica-label {
+      display: block;
+
+      font-size: 10px;
+
+      color: #858585;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      margin-bottom: 6px;
+    }
+
+    .perfil-metrica-valor {
+      font-size: 18px;
+
+      font-weight: 700;
+
+      color: var(--branco);
+    }
+
+
+    /* =====================================================
+       BOTÕES
+       ===================================================== */
+
+    .perfil-acoes {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 12px;
+
       margin-top: 24px;
     }
 
     .perfil-acoes .botao {
-      flex: 1;
+      width: 100%;
+
       margin-top: 0;
+
+      min-height: 52px;
+
+      font-size: 14px;
     }
 
     .botao-secundario {
-      background-color: transparent;
+      background: transparent;
+
       border: 1px solid var(--borda);
+
+      color: var(--branco);
     }
 
     .botao-secundario:hover {
-      background-color: var(--preto-2);
+      background: var(--preto-2);
+
+      border-color: #555;
+    }
+
+
+    /* =====================================================
+       RESPONSIVIDADE
+       ===================================================== */
+
+    @media (max-width: 1100px) {
+
+      .perfil-hero {
+        grid-template-columns:
+          minmax(130px, 0.55fr)
+          minmax(480px, 1.5fr)
+          minmax(130px, 0.55fr);
+      }
+
+      .perfil-card {
+        max-width: 580px;
+      }
+    }
+
+
+    /* =====================================================
+       TABLET
+       ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .perfil-hero {
+        display: block;
+
+        min-height: auto;
+      }
+
+      .perfil-foto {
+        display: none;
+      }
+
+      .perfil-centro {
+        width: 100%;
+
+        max-width: 720px;
+
+        margin: 0 auto;
+
+        padding:
+          45px
+          clamp(24px, 6vw, 55px)
+          60px;
+      }
+
+      .perfil-card {
+        max-width: 650px;
+      }
+    }
+
+
+    /* =====================================================
+       CELULAR
+       ===================================================== */
+
+    @media (max-width: 600px) {
+
+      .perfil-centro {
+        min-height: calc(100vh - 70px);
+
+        padding:
+          32px
+          16px
+          45px;
+
+        justify-content: flex-start;
+      }
+
+      .perfil-header {
+        margin-bottom: 22px;
+      }
+
+      .perfil-header h1 {
+        font-size: 28px;
+      }
+
+      .perfil-header .sub {
+        font-size: 13px;
+
+        margin-top: 8px;
+      }
+
+      .perfil-card {
+        padding: 24px 18px;
+
+        border-radius: 14px;
+      }
+
+      .perfil-avatar {
+        width: 100px;
+        height: 100px;
+
+        font-size: 38px;
+      }
+
+      .perfil-nome {
+        font-size: 21px;
+      }
+
+      .perfil-linha {
+        min-height: 64px;
+
+        gap: 12px;
+      }
+
+      .perfil-label {
+        font-size: 10px;
+      }
+
+      .perfil-valor {
+        font-size: 14px;
+
+        max-width: 65%;
+      }
+
+      .perfil-metricas {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .perfil-acoes {
+        grid-template-columns: 1fr;
+      }
+
+      .perfil-acoes .botao {
+        min-height: 52px;
+      }
+    }
+
+
+    /* =====================================================
+       CELULARES PEQUENOS
+       ===================================================== */
+
+    @media (max-width: 380px) {
+
+      .perfil-centro {
+        padding:
+          28px
+          12px
+          40px;
+      }
+
+      .perfil-card {
+        padding: 22px 14px;
+      }
+
+      .perfil-header h1 {
+        font-size: 25px;
+      }
+
+      .perfil-header .sub {
+        font-size: 12px;
+      }
+
+      .perfil-avatar {
+        width: 88px;
+        height: 88px;
+
+        font-size: 34px;
+      }
+
+      .perfil-nome {
+        font-size: 19px;
+      }
+
+      .perfil-valor {
+        font-size: 13px;
+      }
+
+      .perfil-metrica {
+        padding: 13px;
+      }
+
+      .perfil-metrica-valor {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 
-<body>
+
+<body class="perfil-page">
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
   <header class="topbar">
+
     <div class="logo">
       ST<span class="a">A</span>TRI
       <small>performance through precision</small>
     </div>
-    <nav class="menu">
-      <span class="bandeira" aria-label="Português do Brasil"><img src="/assets/img/brasil.png" alt="bandeira" style="width: 29px;"></span>
+
+    <nav class="menu" aria-label="Navegação principal">
+
+      <span
+        class="bandeira"
+        aria-label="Português do Brasil"
+      >
+        <img
+          src="/assets/img/brasil.png"
+          alt="Brasil"
+          class="bandeiraBR"
+        />
+      </span>
+
     </nav>
+
   </header>
 
-  <main class="hero">
-    <div class="foto"><img src="/assets/img/20260412_063956.jpg" alt="imgBike" style="width: 100%; height: 100%;   filter: brightness(50%);"></div>
 
-    <section class="centro">
-      <h1>Seu perfil</h1>
-      <p class="sub">Veja e acompanhe seus dados de atleta.</p>
+  <!-- =====================================================
+       CONTEÚDO PRINCIPAL
+       ===================================================== -->
 
-      <div class="perfil-card">
-        <div class="perfil-avatar" id="perfil-avatar"></div>
-        <div class="perfil-nome"></div>
+  <main class="perfil-hero">
 
-        <div class="perfil-linha">
-          <span class="perfil-label">Nome</span>
-          <span class="perfil-valor" id="perfil-nome"></span>
-        </div>
-        <div class="perfil-linha">
-          <span class="perfil-label">E-mail</span>
-          <span class="perfil-valor" id="perfil-email"></span>
-        </div>
-        <div class="perfil-linha">
-          <span class="perfil-label">Peso</span>
-          <span class="perfil-valor" id="perfil-peso"></span>
-        </div>
-        <div class="perfil-linha">
-          <span class="perfil-label">Altura</span>
-          <span class="perfil-valor" id="perfil-altura"></span>
-        </div>
-        <div class="perfil-linha">
-          <span class="perfil-label">Nascimento</span>
-          <span class="perfil-valor" id="perfil-nascimento"></span>
-        </div>
 
-        <div class="perfil-acoes">
-          <button class="botao" type="button" id="btnEditarPerfil">Editar perfil</button>
-          <button class="botao botao-secundario" type="button">Sair</button>
-        </div>
-      </div>
-    </section>
-    <div class="foto"><img src="/assets/img/20260621_083403.jpg" alt="imgCorrida" style="width: 100%; height: 100%;   filter: brightness(50%);"></div>
-  </main>
+    <!-- FOTO ESQUERDA -->
 
-   <!--criar o modal aqui para editar o profile-->
-    <!-- MODAL DE EDIÇÃO -->
-    <div class="modal-overlay" id="modalOverlay" style="display: none;">
-      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
-        <button class="modal-fechar" id="btnFechar" type="button" aria-label="Fechar">&times;</button>
-        <h2 class="modal-titulo" id="modalTitulo">Editar perfil</h2>
+    <div class="perfil-foto">
 
-        <form id="form" class="form">
-          <div class="campo">
-            <label for="editNome">Nome</label>
-            <input type="text" id="editNome" name="nome" required />
-          </div>
+      <img
+        src="/assets/img/20260412_063956.jpg"
+        alt="Atleta"
+      />
 
-          <div class="campo">
-            <label for="editEmail">E-mail</label>
-            <input type="email" id="editEmail" name="email" required />
-          </div>
-
-          <div class="linha">
-            <div class="campo">
-              <label for="editPeso">Peso (kg)</label>
-              <input type="number" id="editPeso" name="peso" step="0.1" min="1" required />
-            </div>
-            <div class="campo">
-              <label for="editAltura">Altura (m)</label>
-              <input type="number" id="editAltura" name="altura" step="0.01" min="0.1" required />
-            </div>
-          </div>
-
-          <div class="campo">
-            <label for="editNascimento">Nascimento</label>
-            <input type="date" id="editNascimento" name="nascimento" required />
-          </div>
-
-          <div class="modal-botoes">
-            <button class="botao" type="submit">Salvar alterações</button>
-            <button class="botao botao-secundario" type="button" id="btnCancelar">Cancelar</button>
-          </div>
-          <p id="errorMessage" style="color: red; font-size: 20px;"></p>
-        </form>
-      </div>
     </div>
 
-  <script type="module" src="../js/profile.js"></script>
+
+    <!-- =================================================
+         PERFIL CENTRAL
+         ================================================= -->
+
+    <section class="perfil-centro">
+
+      <div class="perfil-header">
+
+        <h1>Seu perfil</h1>
+
+        <p class="sub">
+          Veja e acompanhe seus dados de atleta.
+        </p>
+
+      </div>
+
+
+      <!-- CARD -->
+
+      <div class="perfil-card">
+
+
+        <!-- AVATAR -->
+
+        <div class="perfil-avatar-container">
+
+          <div
+            class="perfil-avatar"
+            id="perfil-avatar"
+            aria-label="Avatar do atleta"
+          ></div>
+
+          <div
+            class="perfil-nome"
+            id="perfil-nome-topo"
+          >
+          </div>
+
+          <span class="perfil-status">
+            Perfil ativo
+          </span>
+
+        </div>
+
+
+        <!-- DADOS -->
+
+        <div class="perfil-dados">
+
+          <div class="perfil-linha">
+
+            <div class="perfil-info">
+
+              <span class="perfil-label">
+                Nome completo
+              </span>
+
+              <span
+                class="perfil-valor"
+                id="perfil-nome"
+              >
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="perfil-linha">
+
+            <div class="perfil-info">
+
+              <span class="perfil-label">
+                E-mail
+              </span>
+
+              <span
+                class="perfil-valor"
+                id="perfil-email"
+              >
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="perfil-linha">
+
+            <div class="perfil-info">
+
+              <span class="perfil-label">
+                Data de nascimento
+              </span>
+
+              <span
+                class="perfil-valor"
+                id="perfil-nascimento"
+              >
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- MÉTRICAS -->
+
+        <div class="perfil-metricas">
+
+          <div class="perfil-metrica">
+
+            <span class="perfil-metrica-label">
+              Peso
+            </span>
+
+            <span
+              class="perfil-metrica-valor"
+              id="perfil-peso"
+            >
+            </span>
+
+          </div>
+
+
+          <div class="perfil-metrica">
+
+            <span class="perfil-metrica-label">
+              Altura
+            </span>
+
+            <span
+              class="perfil-metrica-valor"
+              id="perfil-altura"
+            >
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- AÇÕES -->
+
+        <div class="perfil-acoes">
+
+          <button
+            class="botao"
+            type="button"
+            id="btnEditarPerfil"
+          >
+            Editar perfil
+          </button>
+
+          <button
+            class="botao botao-secundario"
+            type="button"
+            id="btnSair"
+          >
+            Sair
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOTO DIREITA -->
+
+    <div class="perfil-foto perfil-foto-direita">
+
+      <img
+        src="/assets/img/20260621_083403.jpg"
+        alt="Atleta"
+      />
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       MODAL DE EDIÇÃO
+       ===================================================== -->
+
+  <div
+    class="modal-overlay"
+    id="modalOverlay"
+    style="display: none;"
+  >
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitulo"
+    >
+
+      <button
+        class="modal-fechar"
+        id="btnFechar"
+        type="button"
+        aria-label="Fechar"
+      >
+        &times;
+      </button>
+
+
+      <h2
+        class="modal-titulo"
+        id="modalTitulo"
+      >
+        Editar perfil
+      </h2>
+
+
+      <form
+        id="form"
+        class="form"
+      >
+
+        <div class="campo">
+
+          <label for="editNome">
+            Nome completo
+          </label>
+
+          <input
+            type="text"
+            id="editNome"
+            name="nome"
+            autocomplete="name"
+            required
+          />
+
+        </div>
+
+
+        <div class="campo">
+
+          <label for="editEmail">
+            E-mail
+          </label>
+
+          <input
+            type="email"
+            id="editEmail"
+            name="email"
+            autocomplete="email"
+            required
+          />
+
+        </div>
+
+
+        <div class="linha">
+
+          <div class="campo">
+
+            <label for="editPeso">
+              Peso (kg)
+            </label>
+
+            <input
+              type="number"
+              id="editPeso"
+              name="peso"
+              step="0.1"
+              min="1"
+              placeholder="Ex: 70.5"
+              required
+            />
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="editAltura">
+              Altura (m)
+            </label>
+
+            <input
+              type="number"
+              id="editAltura"
+              name="altura"
+              step="0.01"
+              min="0.1"
+              placeholder="Ex: 1.80"
+              required
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="campo">
+
+          <label for="editNascimento">
+            Data de nascimento
+          </label>
+
+          <input
+            type="date"
+            id="editNascimento"
+            name="nascimento"
+            required
+          />
+
+        </div>
+
+
+        <div class="modal-botoes">
+
+          <button
+            class="botao"
+            type="submit"
+          >
+            Salvar alterações
+          </button>
+
+          <button
+            class="botao botao-secundario"
+            type="button"
+            id="btnCancelar"
+          >
+            Cancelar
+          </button>
+
+        </div>
+
+
+        <p
+          id="errorMessage"
+          class="modal-erro"
+        ></p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script
+    type="module"
+    src="../js/profile.js"
+  ></script>
+
 </body>
 
 </html>

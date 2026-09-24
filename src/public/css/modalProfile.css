@@ -133,3 +133,127 @@ body.modal-aberto .modal {
     flex-direction: column;
   }
 }
+
+/* =====================================================
+   ERRO DO MODAL
+   ===================================================== */
+
+.modal-erro {
+  margin-top: 12px;
+
+  min-height: 18px;
+
+  color: var(--vermelho);
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+
+/* =====================================================
+   INPUTS DO MODAL
+   ===================================================== */
+
+.modal .campo {
+  margin-bottom: 16px;
+}
+
+.modal .campo label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--cinza);
+
+  font-size: 12px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+.modal .campo input {
+  width: 100%;
+
+  height: 52px;
+
+  padding: 0 14px;
+
+  background: var(--preto-2);
+
+  border: 1px solid var(--borda);
+
+  border-radius: 7px;
+
+  color: var(--branco);
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.modal .campo input:focus {
+  outline: none;
+
+  border-color: var(--vermelho);
+
+  box-shadow:
+    0 0 0 3px rgba(239, 62, 82, 0.12);
+}
+
+
+/* =====================================================
+   LINHA DO MODAL
+   ===================================================== */
+
+.modal .linha {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+  .modal {
+    width: calc(100vw - 24px);
+
+    max-height: 92vh;
+
+    padding: 24px 18px;
+  }
+
+  .modal-titulo {
+    font-size: 20px;
+
+    margin-bottom: 22px;
+  }
+
+  .modal .linha {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-botoes {
+    flex-direction: column;
+  }
+
+  .modal-botoes .botao {
+    width: 100%;
+  }
+
+  .modal-fechar {
+    top: 12px;
+    right: 15px;
+  }
+}
