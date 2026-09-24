@@ -27,9 +27,7 @@
       display: grid;
 
       grid-template-columns:
-        minmax(180px, 0.8fr)
-        minmax(500px, 1.4fr)
-        minmax(180px, 0.8fr);
+        minmax(180px, 0.8fr) minmax(500px, 1.4fr) minmax(180px, 0.8fr);
 
       background: var(--preto);
 
@@ -59,20 +57,16 @@
       inset: 0;
 
       background:
-        linear-gradient(
-          to right,
+        linear-gradient(to right,
           rgba(17, 17, 17, 0.15),
-          rgba(17, 17, 17, 0.55)
-        );
+          rgba(17, 17, 17, 0.55));
     }
 
     .perfil-foto-direita::after {
       background:
-        linear-gradient(
-          to left,
+        linear-gradient(to left,
           rgba(17, 17, 17, 0.15),
-          rgba(17, 17, 17, 0.55)
-        );
+          rgba(17, 17, 17, 0.55));
     }
 
     .perfil-foto img {
@@ -104,11 +98,9 @@
       padding: 50px clamp(24px, 4vw, 55px);
 
       background:
-        radial-gradient(
-          circle at top,
+        radial-gradient(circle at top,
           rgba(239, 62, 82, 0.06),
-          transparent 40%
-        ),
+          transparent 40%),
         var(--preto);
 
       display: flex;
@@ -163,11 +155,9 @@
       padding: 34px;
 
       background:
-        linear-gradient(
-          145deg,
+        linear-gradient(145deg,
           #292929,
-          #202020
-        );
+          #202020);
 
       border: 1px solid var(--borda);
 
@@ -202,11 +192,9 @@
       border-radius: 50%;
 
       background:
-        radial-gradient(
-          circle at 35% 30%,
+        radial-gradient(circle at 35% 30%,
           #3a3a3a,
-          #171717
-        );
+          #171717);
 
       border: 3px solid var(--vermelho);
 
@@ -427,9 +415,7 @@
 
       .perfil-hero {
         grid-template-columns:
-          minmax(130px, 0.55fr)
-          minmax(480px, 1.5fr)
-          minmax(130px, 0.55fr);
+          minmax(130px, 0.55fr) minmax(480px, 1.5fr) minmax(130px, 0.55fr);
       }
 
       .perfil-card {
@@ -462,9 +448,7 @@
         margin: 0 auto;
 
         padding:
-          45px
-          clamp(24px, 6vw, 55px)
-          60px;
+          45px clamp(24px, 6vw, 55px) 60px;
       }
 
       .perfil-card {
@@ -483,9 +467,7 @@
         min-height: calc(100vh - 70px);
 
         padding:
-          32px
-          16px
-          45px;
+          32px 16px 45px;
 
         justify-content: flex-start;
       }
@@ -559,9 +541,7 @@
 
       .perfil-centro {
         padding:
-          28px
-          12px
-          40px;
+          28px 12px 40px;
       }
 
       .perfil-card {
@@ -618,15 +598,8 @@
 
     <nav class="menu" aria-label="Navegação principal">
 
-      <span
-        class="bandeira"
-        aria-label="Português do Brasil"
-      >
-        <img
-          src="/assets/img/brasil.png"
-          alt="Brasil"
-          class="bandeiraBR"
-        />
+      <span class="bandeira" aria-label="Português do Brasil">
+        <img src="/assets/img/brasil.png" alt="Brasil" class="bandeiraBR" />
       </span>
 
     </nav>
@@ -645,10 +618,7 @@
 
     <div class="perfil-foto">
 
-      <img
-        src="/assets/img/20260412_063956.jpg"
-        alt="Atleta"
-      />
+      <img src="/assets/img/20260412_063956.jpg" alt="Atleta" />
 
     </div>
 
@@ -679,16 +649,9 @@
 
         <div class="perfil-avatar-container">
 
-          <div
-            class="perfil-avatar"
-            id="perfil-avatar"
-            aria-label="Avatar do atleta"
-          ></div>
+          <div class="perfil-avatar" id="perfil-avatar" aria-label="Avatar do atleta"></div>
 
-          <div
-            class="perfil-nome"
-            id="perfil-nome-topo"
-          >
+          <div class="perfil-nome" id="perfil-nome-topo">
           </div>
 
           <span class="perfil-status">
@@ -710,10 +673,7 @@
                 Nome completo
               </span>
 
-              <span
-                class="perfil-valor"
-                id="perfil-nome"
-              >
+              <span class="perfil-valor" id="perfil-nome">
               </span>
 
             </div>
@@ -729,10 +689,7 @@
                 E-mail
               </span>
 
-              <span
-                class="perfil-valor"
-                id="perfil-email"
-              >
+              <span class="perfil-valor" id="perfil-email">
               </span>
 
             </div>
@@ -748,10 +705,7 @@
                 Data de nascimento
               </span>
 
-              <span
-                class="perfil-valor"
-                id="perfil-nascimento"
-              >
+              <span class="perfil-valor" id="perfil-nascimento">
               </span>
 
             </div>
@@ -771,10 +725,7 @@
               Peso
             </span>
 
-            <span
-              class="perfil-metrica-valor"
-              id="perfil-peso"
-            >
+            <span class="perfil-metrica-valor" id="perfil-peso">
             </span>
 
           </div>
@@ -786,10 +737,7 @@
               Altura
             </span>
 
-            <span
-              class="perfil-metrica-valor"
-              id="perfil-altura"
-            >
+            <span class="perfil-metrica-valor" id="perfil-altura">
             </span>
 
           </div>
@@ -801,19 +749,15 @@
 
         <div class="perfil-acoes">
 
-          <button
-            class="botao"
-            type="button"
-            id="btnEditarPerfil"
-          >
+          <a href="/trainings" class="botao botao-treinos">
+            Meus treinos
+          </a>
+
+          <button class="botao botao-secundario" type="button" id="btnEditarPerfil">
             Editar perfil
           </button>
 
-          <button
-            class="botao botao-secundario"
-            type="button"
-            id="btnSair"
-          >
+          <button class="botao botao-secundario" type="button" id="btnSair">
             Sair
           </button>
 
@@ -828,10 +772,7 @@
 
     <div class="perfil-foto perfil-foto-direita">
 
-      <img
-        src="/assets/img/20260621_083403.jpg"
-        alt="Atleta"
-      />
+      <img src="/assets/img/20260621_083403.jpg" alt="Atleta" />
 
     </div>
 
@@ -842,41 +783,21 @@
        MODAL DE EDIÇÃO
        ===================================================== -->
 
-  <div
-    class="modal-overlay"
-    id="modalOverlay"
-    style="display: none;"
-  >
+  <div class="modal-overlay" id="modalOverlay" style="display: none;">
 
-    <div
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalTitulo"
-    >
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
 
-      <button
-        class="modal-fechar"
-        id="btnFechar"
-        type="button"
-        aria-label="Fechar"
-      >
+      <button class="modal-fechar" id="btnFechar" type="button" aria-label="Fechar">
         &times;
       </button>
 
 
-      <h2
-        class="modal-titulo"
-        id="modalTitulo"
-      >
+      <h2 class="modal-titulo" id="modalTitulo">
         Editar perfil
       </h2>
 
 
-      <form
-        id="form"
-        class="form"
-      >
+      <form id="form" class="form">
 
         <div class="campo">
 
@@ -884,13 +805,7 @@
             Nome completo
           </label>
 
-          <input
-            type="text"
-            id="editNome"
-            name="nome"
-            autocomplete="name"
-            required
-          />
+          <input type="text" id="editNome" name="nome" autocomplete="name" required />
 
         </div>
 
@@ -901,13 +816,7 @@
             E-mail
           </label>
 
-          <input
-            type="email"
-            id="editEmail"
-            name="email"
-            autocomplete="email"
-            required
-          />
+          <input type="email" id="editEmail" name="email" autocomplete="email" required />
 
         </div>
 
@@ -920,15 +829,7 @@
               Peso (kg)
             </label>
 
-            <input
-              type="number"
-              id="editPeso"
-              name="peso"
-              step="0.1"
-              min="1"
-              placeholder="Ex: 70.5"
-              required
-            />
+            <input type="number" id="editPeso" name="peso" step="0.1" min="1" placeholder="Ex: 70.5" required />
 
           </div>
 
@@ -939,15 +840,7 @@
               Altura (m)
             </label>
 
-            <input
-              type="number"
-              id="editAltura"
-              name="altura"
-              step="0.01"
-              min="0.1"
-              placeholder="Ex: 1.80"
-              required
-            />
+            <input type="number" id="editAltura" name="altura" step="0.01" min="0.1" placeholder="Ex: 1.80" required />
 
           </div>
 
@@ -960,40 +853,25 @@
             Data de nascimento
           </label>
 
-          <input
-            type="date"
-            id="editNascimento"
-            name="nascimento"
-            required
-          />
+          <input type="date" id="editNascimento" name="nascimento" required />
 
         </div>
 
 
         <div class="modal-botoes">
 
-          <button
-            class="botao"
-            type="submit"
-          >
+          <button class="botao" type="submit">
             Salvar alterações
           </button>
 
-          <button
-            class="botao botao-secundario"
-            type="button"
-            id="btnCancelar"
-          >
+          <button class="botao botao-secundario" type="button" id="btnCancelar">
             Cancelar
           </button>
 
         </div>
 
 
-        <p
-          id="errorMessage"
-          class="modal-erro"
-        ></p>
+        <p id="errorMessage" class="modal-erro"></p>
 
       </form>
 
@@ -1004,10 +882,7 @@
 
   <!-- JAVASCRIPT -->
 
-  <script
-    type="module"
-    src="../js/profile.js"
-  ></script>
+  <script type="module" src="../js/profile.js"></script>
 
 </body>
 

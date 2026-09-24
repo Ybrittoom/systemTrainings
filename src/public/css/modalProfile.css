@@ -257,3 +257,131 @@ body.modal-aberto .modal {
     right: 15px;
   }
 }
+
+.perfil-acoes {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+
+/* =========================================
+   BOTÃO MEUS TREINOS
+   ========================================= */
+
+.botao-treinos {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 54px;
+
+  margin-top: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--vermelho),
+      #d92f42
+    );
+
+  color: var(--branco);
+
+  text-decoration: none;
+
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  text-transform: uppercase;
+
+  box-shadow:
+    0 8px 20px
+    rgba(239, 62, 82, 0.18);
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.botao-treinos:hover {
+
+  background:
+    linear-gradient(
+      135deg,
+      #f34b5e,
+      var(--vermelho-hover)
+    );
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(239, 62, 82, 0.25);
+}
+
+
+.botao-treinos::after {
+
+  content: "→";
+
+  margin-left: 10px;
+
+  font-size: 19px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.botao-treinos:hover::after {
+
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================
+   OUTROS BOTÕES
+   ========================================= */
+
+.perfil-acoes .botao-secundario {
+
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+
+  .perfil-acoes {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .botao-treinos {
+    grid-column: auto;
+
+    min-height: 54px;
+  }
+
+}
