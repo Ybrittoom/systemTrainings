@@ -29,6 +29,7 @@ class TrainingService {
         //o .map() transforma cada linha do banco do mesmo formatinho de objeto
 
         return result.rows.map((training) => ({
+            id_sport: training.id_sport,
             title_sport: training.title_sport,
             distance_trainings: training.distance_trainings,
             duration_trainings: training.duration_trainings,
