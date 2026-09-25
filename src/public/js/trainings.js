@@ -909,7 +909,7 @@ function calcularPace() {
 
 
     elements.pace.value =
-        `${minutosFinais}:${String(
+        `${minutosFinais}.${String(
             segundosFinais
         ).padStart(2, "0")}`;
 
