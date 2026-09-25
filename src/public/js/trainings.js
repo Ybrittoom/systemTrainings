@@ -826,6 +826,35 @@ elements.periodo.addEventListener(
 );
 
 
+// CONVERTER PACE PARA DECIMAL
+
+function converterPaceParaDecimal(paceTexto) {
+
+    if (!paceTexto) {
+        return 0;
+    }
+
+    const texto = String(paceTexto).trim();
+
+    if (!texto.includes(":")) {
+        const valor = Number(texto);
+        return Number.isFinite(valor) ? valor : 0;
+    }
+
+    const [minutos, segundos] = texto
+        .split(":")
+        .map(Number);
+
+    if (!Number.isFinite(minutos) || !Number.isFinite(segundos)) {
+        return 0;
+    }
+
+    return Number(
+        (minutos + (segundos / 60)).toFixed(2)
+    );
+}
+
+
 // CALCULAR PACE
 
 function calcularPace() {
@@ -993,11 +1022,15 @@ elements.formTreino.addEventListener(
              * Agora o pace NÃO vem
              * digitado pelo usuário.
              *
-             * Ele foi calculado acima.
+             * Ele foi calculado acima,
+             * mas precisamos salvar em decimal
+             * para o banco aceitar.
              */
 
             pace_trainings:
-                elements.pace.value,
+                converterPaceParaDecimal(
+                    elements.pace.value
+                ),
 
 
             calories_trainings:
