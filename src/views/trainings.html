@@ -1,135 +1,745 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>STATRI | Histórico de Treinos</title>
-    <link rel="stylesheet" href="/css/statri.css" />
-    <link rel="stylesheet" href="/css/perfil.css" />
-    <link rel="stylesheet" href="/css/modalProfile.css" />
-    <link rel="stylesheet" href="/css/trainings.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="logo">
-        ST<span class="a">A</span>TRI
-        <small>performance through precision</small>
-      </div>
-      <nav class="menu">
-        <a href="perfil.html">Perfil</a>
-        <a href="treinos.html">Treinos</a>
-        <span class="bandeira" aria-label="Português do Brasil"></span>
-      </nav>
-    </header>
 
-    <main class="treinos-main">
-      <section class="treinos-centro">
-        <h1>Histórico de treinos</h1>
-        <p class="sub">Acompanhe todos os seus treinos registrados.</p>
+<head>
+  <meta charset="UTF-8" />
 
-        <div class="treinos-acoes">
-          <button class="botao treinos-btn-add" type="button" id="btnAddTreino">
-            + Adicionar treino
-          </button>
-        </div>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
 
-        <div class="treinos-lista" id="listaTreinos"></div>
+  <title>STATRI | Meus Treinos</title>
 
-        <p class="treinos-vazio" id="msgVazia" hidden>
-          Nenhum treino registrado ainda. Clique em "Adicionar treino" para começar.
-        </p>
-      </section>
-    </main>
+  <link
+    rel="stylesheet"
+    href="/css/statri.css"
+  />
 
-    <footer class="footer">
-      <div class="logo">ST<span class="a">A</span>TRI</div>
-      <nav>
-        <a href="#">Recursos</a>
-        <a href="#">Historia</a>
-        <a href="#">Sobre</a>
-      </nav>
-      <div class="social">
-        <a href="#"><span class="icone ig"></span> Instagram</a>
-        <a href="#"><span class="icone in"></span> Linkedin</a>
-      </div>
-    </footer>
+  <link
+    rel="stylesheet"
+    href="/css/perfil.css"
+  />
 
-    <!-- MODAL DE NOVO TREINO -->
-    <div class="modal-overlay" id="modalTreino">
-      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTreinoTitulo">
-        <button class="modal-fechar" id="btnFecharTreino" type="button" aria-label="Fechar">&times;</button>
-        <h2 class="modal-titulo" id="modalTreinoTitulo">Registrar treino</h2>
+  <link
+    rel="stylesheet"
+    href="/css/modalProfile.css"
+  />
 
-        <form id="formTreino" class="form">
+  <link
+    rel="stylesheet"
+    href="/css/trainings.css"
+  />
+</head>
 
-           <div class="campo">
-            <label for="id_sport">Esporte</label>
-            <!-- TEMPORARIO: essas opçoes deveriam vir do banco (tabela sports) via um GET /sports -->
-            <select id="id_sport" name="id_sport" required>
-              <option value="1">Corrida</option>
-              <option value="2">Ciclismo</option>
-              <option value="3">Natação</option>
-            </select>
-          </div>
 
-          <div class="campo">
-            <label for="title_sport">Título / Esporte</label>
-            <input type="text" id="title_sport" name="title_sport" placeholder="Ex.: Ciclismo longo" required />
-          </div>
+<body>
 
-          <div class="linha">
-            <div class="campo">
-              <label for="distance_trainings">Distância (km)</label>
-              <input type="number" id="distance_trainings" name="distance_trainings" step="0.01" min="0" required />
-            </div>
-            <div class="campo">
-              <label for="duration_trainings">Duração (min)</label>
-              <input type="number" id="duration_trainings" name="duration_trainings" step="1" min="1" required />
-            </div>
-          </div>
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
 
-          <div class="linha">
-            <div class="campo">
-              <label for="pace_trainings">Pace (min/km)</label>
-              <input type="text" id="pace_trainings" name="pace_trainings" placeholder="Ex.: 4:30" required />
-            </div>
-          </div>
+  <header class="topbar">
 
-          <div class="linha">
-            <div class="campo">
-              <label for="calories_trainings">Calorias (kcal)</label>
-              <input type="number" id="calories_trainings" name="calories_trainings" step="1" min="0" required />
-            </div>
-            <div class="campo">
-              <label for="intensity_trainings">Intensidade</label>
-              <select id="intensity_trainings" name="intensity_trainings" required>
-                <option value="leve">Leve</option>
-                <option value="moderada">Moderada</option>
-                <option value="intensa">Intensa</option>
-                <!--verificar se vou colocar maxima-->
-              </select>
-            </div>
-          </div>
+    <div class="logo">
+      ST<span class="a">A</span>TRI
 
-          <div class="campo">
-            <label for="training_date">Data do treino</label>
-            <input type="date" id="training_date" name="training_date" required />
-          </div>
-
-          <div class="campo">
-            <label for="notes_trainings">Notas</label>
-            <input type="text" id="notes_trainings" name="notes_trainings" placeholder="Observações do treino" />
-          </div>
-
-          <div class="modal-botoes">
-            <button class="botao" type="submit">Salvar treino</button>
-            <button class="botao botao-secundario" type="button" id="btnCancelarTreino">Cancelar</button>
-          </div>
-          <p id="errorMessage" style="color: red;"></p>
-        </form>
-      </div>
+      <small>
+        performance through precision
+      </small>
     </div>
 
-    <script type="module" src="../js/trainings.js"></script>
-  </body>
+
+    <nav
+      class="menu"
+      aria-label="Navegação principal"
+    >
+
+      <a href="/perfil">
+        Perfil
+      </a>
+
+      <a
+        href="/trainings"
+        class="menu-ativo"
+      >
+        Treinos
+      </a>
+
+      <span
+        class="bandeira"
+        aria-label="Português do Brasil"
+      >
+        <img
+          src="/assets/img/brasil.png"
+          alt="Brasil"
+          class="bandeiraBR"
+        />
+      </span>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================================
+       CONTEÚDO
+       ===================================================== -->
+
+  <main class="treinos-main">
+
+    <section class="treinos-centro">
+
+
+      <!-- =================================================
+           CABEÇALHO
+           ================================================= -->
+
+      <div class="treinos-header">
+
+        <div>
+
+          <span class="treinos-overline">
+            PERFORMANCE
+          </span>
+
+          <h1>
+            Meus treinos
+          </h1>
+
+          <p class="sub">
+            Acompanhe sua evolução ao longo do tempo.
+          </p>
+
+        </div>
+
+
+        <button
+          class="botao treinos-btn-add"
+          type="button"
+          id="btnAddTreino"
+        >
+          <span class="btn-plus">+</span>
+          Registrar treino
+        </button>
+
+      </div>
+
+
+      <!-- =================================================
+           FILTROS
+           ================================================= -->
+
+      <div class="treinos-filtros">
+
+        <div class="filtro-modalidades">
+
+          <button
+            type="button"
+            class="filtro-btn ativo"
+            data-filter="todos"
+          >
+            Todos
+          </button>
+
+          <button
+            type="button"
+            class="filtro-btn"
+            data-filter="corrida"
+          >
+            Corrida
+          </button>
+
+          <button
+            type="button"
+            class="filtro-btn"
+            data-filter="ciclismo"
+          >
+            Ciclismo
+          </button>
+
+          <button
+            type="button"
+            class="filtro-btn"
+            data-filter="natacao"
+          >
+            Natação
+          </button>
+
+        </div>
+
+
+        <select
+          id="filtroPeriodo"
+          class="filtro-periodo"
+        >
+
+          <option value="todos">
+            Todos os períodos
+          </option>
+
+          <option value="mes">
+            Este mês
+          </option>
+
+          <option value="ultimos3">
+            Últimos 3 meses
+          </option>
+
+          <option value="ano">
+            Este ano
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- =================================================
+           LISTA
+           ================================================= -->
+
+      <div
+        class="treinos-lista"
+        id="listaTreinos"
+      ></div>
+
+
+      <!-- =================================================
+           ESTADO VAZIO
+           ================================================= -->
+
+      <div
+        class="treinos-vazio"
+        id="msgVazia"
+        hidden
+      >
+
+        <div class="vazio-icone">
+          +
+        </div>
+
+        <h2>
+          Nenhum treino encontrado
+        </h2>
+
+        <p>
+          Registre seu primeiro treino para começar
+          a acompanhar sua evolução.
+        </p>
+
+        <button
+          class="botao"
+          type="button"
+          id="btnAdicionarVazio"
+        >
+          Registrar treino
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="logo">
+      ST<span class="a">A</span>TRI
+    </div>
+
+    <nav>
+
+      <a href="#">
+        Recursos
+      </a>
+
+      <a href="#">
+        História
+      </a>
+
+      <a href="#">
+        Sobre
+      </a>
+
+    </nav>
+
+
+    <div class="social">
+
+      <a href="#">
+        <span class="icone ig"></span>
+        Instagram
+      </a>
+
+      <a href="#">
+        <span class="icone in"></span>
+        Linkedin
+      </a>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       MODAL DE ESCOLHA DA MODALIDADE
+       ===================================================== -->
+
+  <div
+    class="modal-overlay"
+    id="modalModalidade"
+  >
+
+    <div
+      class="modal modalidade-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalModalidadeTitulo"
+    >
+
+      <button
+        class="modal-fechar"
+        id="btnFecharModalidade"
+        type="button"
+        aria-label="Fechar"
+      >
+        &times;
+      </button>
+
+
+      <div class="modalidade-header">
+
+        <span class="modalidade-overline">
+          NOVO REGISTRO
+        </span>
+
+        <h2
+          class="modal-titulo"
+          id="modalModalidadeTitulo"
+        >
+          Qual modalidade?
+        </h2>
+
+        <p>
+          Escolha o esporte que deseja registrar.
+        </p>
+
+      </div>
+
+
+      <div class="modalidades-grid">
+
+
+        <!-- CORRIDA -->
+
+        <button
+          type="button"
+          class="modalidade-card"
+          data-esporte="corrida"
+        >
+
+          <span class="modalidade-icone corrida">
+            ↗
+          </span>
+
+          <span class="modalidade-nome">
+            Corrida
+          </span>
+
+          <span class="modalidade-descricao">
+            Ritmo e distância
+          </span>
+
+        </button>
+
+
+        <!-- CICLISMO -->
+
+        <button
+          type="button"
+          class="modalidade-card"
+          data-esporte="ciclismo"
+        >
+
+          <span class="modalidade-icone ciclismo">
+            ◉
+          </span>
+
+          <span class="modalidade-nome">
+            Ciclismo
+          </span>
+
+          <span class="modalidade-descricao">
+            Velocidade e distância
+          </span>
+
+        </button>
+
+
+        <!-- NATAÇÃO -->
+
+        <button
+          type="button"
+          class="modalidade-card"
+          data-esporte="natacao"
+        >
+
+          <span class="modalidade-icone natacao">
+            ≋
+          </span>
+
+          <span class="modalidade-nome">
+            Natação
+          </span>
+
+          <span class="modalidade-descricao">
+            Ritmo e distância
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MODAL DE CADASTRO
+       ===================================================== -->
+
+  <div
+    class="modal-overlay"
+    id="modalTreino"
+  >
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTreinoTitulo"
+    >
+
+      <button
+        class="modal-fechar"
+        id="btnFecharTreino"
+        type="button"
+        aria-label="Fechar"
+      >
+        &times;
+      </button>
+
+
+      <div class="modal-form-header">
+
+        <span
+          class="modalidade-selecionada"
+          id="modalidadeSelecionada"
+        >
+          CORRIDA
+        </span>
+
+        <h2
+          class="modal-titulo"
+          id="modalTreinoTitulo"
+        >
+          Registrar corrida
+        </h2>
+
+      </div>
+
+
+      <form
+        id="formTreino"
+        class="form"
+      >
+
+
+        <!-- ESPORTE -->
+
+        <div class="campo">
+
+          <label for="id_sport">
+            Esporte
+          </label>
+
+          <select
+            id="id_sport"
+            name="id_sport"
+            required
+          >
+
+            <option value="1">
+              Corrida
+            </option>
+
+            <option value="2">
+              Ciclismo
+            </option>
+
+            <option value="3">
+              Natação
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- TÍTULO -->
+
+        <div class="campo">
+
+          <label for="title_sport">
+            Nome do treino
+          </label>
+
+          <input
+            type="text"
+            id="title_sport"
+            name="title_sport"
+            placeholder="Ex.: Corrida leve"
+            required
+          />
+
+        </div>
+
+
+        <!-- DISTÂNCIA + DURAÇÃO -->
+
+        <div class="linha">
+
+          <div class="campo">
+
+            <label for="distance_trainings">
+              Distância
+            </label>
+
+            <div class="input-unidade">
+
+              <input
+                type="number"
+                id="distance_trainings"
+                name="distance_trainings"
+                step="0.01"
+                min="0.01"
+                placeholder="Ex.: 8.5"
+                required
+              />
+
+              <span>
+                km
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="duration_trainings">
+              Duração
+            </label>
+
+            <div class="input-unidade">
+
+              <input
+                type="number"
+                id="duration_trainings"
+                name="duration_trainings"
+                step="1"
+                min="1"
+                placeholder="Ex.: 45"
+                required
+              />
+
+              <span>
+                min
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PACE AUTOMÁTICO -->
+
+        <div class="campo">
+
+          <label for="pace_trainings">
+            Pace calculado
+          </label>
+
+          <div class="campo-calculado">
+
+            <input
+              type="text"
+              id="pace_trainings"
+              name="pace_trainings"
+              placeholder="Será calculado automaticamente"
+              readonly
+            />
+
+            <span>
+              min/km
+            </span>
+
+          </div>
+
+          <small class="campo-ajuda">
+            Calculado automaticamente usando distância e duração.
+          </small>
+
+        </div>
+
+
+        <!-- CALORIAS + INTENSIDADE -->
+
+        <div class="linha">
+
+          <div class="campo">
+
+            <label for="calories_trainings">
+              Calorias
+            </label>
+
+            <div class="input-unidade">
+
+              <input
+                type="number"
+                id="calories_trainings"
+                name="calories_trainings"
+                step="1"
+                min="0"
+                placeholder="Ex.: 540"
+                required
+              />
+
+              <span>
+                kcal
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label for="intensity_trainings">
+              Intensidade
+            </label>
+
+            <select
+              id="intensity_trainings"
+              name="intensity_trainings"
+              required
+            >
+
+              <option value="leve">
+                Leve
+              </option>
+
+              <option value="moderada">
+                Moderada
+              </option>
+
+              <option value="intensa">
+                Intensa
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- DATA -->
+
+        <div class="campo">
+
+          <label for="training_date">
+            Data do treino
+          </label>
+
+          <input
+            type="date"
+            id="training_date"
+            name="training_date"
+            required
+          />
+
+        </div>
+
+
+        <!-- NOTAS -->
+
+        <div class="campo">
+
+          <label for="notes_trainings">
+            Observações
+          </label>
+
+          <textarea
+            id="notes_trainings"
+            name="notes_trainings"
+            placeholder="Como foi o treino?"
+            rows="3"
+          ></textarea>
+
+        </div>
+
+
+        <!-- BOTÕES -->
+
+        <div class="modal-botoes">
+
+          <button
+            class="botao"
+            type="submit"
+          >
+            Salvar treino
+          </button>
+
+          <button
+            class="botao botao-secundario"
+            type="button"
+            id="btnCancelarTreino"
+          >
+            Cancelar
+          </button>
+
+        </div>
+
+
+        <p
+          id="errorMessage"
+          class="modal-erro"
+        ></p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script
+    type="module"
+    src="../js/trainings.js"
+  ></script>
+
+</body>
+
 </html>
