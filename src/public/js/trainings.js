@@ -143,10 +143,49 @@ function obterNomeEsporte(esporte) {
 
 // FORMATAR DURAÇÃO
 
+function parseDuracaoParaMinutos(valor) {
+
+    if (valor === null || valor === undefined || valor === "") {
+        return Number.NaN;
+    }
+
+    if (typeof valor === "number") {
+        return Number.isFinite(valor) ? valor : Number.NaN;
+    }
+
+    const texto = String(valor).trim();
+
+    if (!texto) {
+        return Number.NaN;
+    }
+
+    if (texto.includes(":")) {
+        const partes = texto.split(":").map(Number);
+
+        if (partes.length === 2) {
+            const [minutos, segundos] = partes;
+            return Number.isFinite(minutos) && Number.isFinite(segundos)
+                ? minutos + (segundos / 60)
+                : Number.NaN;
+        }
+
+        if (partes.length === 3) {
+            const [horas, minutos, segundos] = partes;
+            return Number.isFinite(horas) && Number.isFinite(minutos) && Number.isFinite(segundos)
+                ? (horas * 60) + minutos + (segundos / 60)
+                : Number.NaN;
+        }
+    }
+
+    const numero = Number(texto);
+    return Number.isFinite(numero) ? numero : Number.NaN;
+}
+
+
 function formatarDuracao(valor) {
 
     const minutos =
-        Number(valor);
+        parseDuracaoParaMinutos(valor);
 
     if (
         !Number.isFinite(minutos) ||
@@ -170,7 +209,7 @@ function formatarDuracao(valor) {
     }
 
 
-    return `${resto} min`;
+    return `${Math.round(minutos)} min`;
 }
 
 
