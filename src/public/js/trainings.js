@@ -82,38 +82,20 @@ let esporteSelecionado = "corrida";
 function normalizarEsporte(treino) {
     const texto = String(treino.title_sport || "").toLowerCase();
 
-    const id = Number(
-        treino.id_sport
-    );
+    const id = Number(treino.id_sport);
 
-    if (
-        id === 1 ||
-        texto.includes("corrida") ||
-        texto.includes("run")
-    ) {
-        return "corrida";
+    switch (id) {
+        case 1:
+            return "corrida"
+            break;
+        case 2: 
+            return "ciclismo"
+            break;
+        case 3: 
+            return "nataçao"
+        default:
+            return "outro"
     }
-
-
-    if (
-        id === 2 ||
-        texto.includes("cicl") ||
-        texto.includes("bike")
-    ) {
-        return "ciclismo";
-    }
-
-
-    if (
-        id === 3 ||
-        texto.includes("nata") ||
-        texto.includes("swim")
-    ) {
-        return "natacao";
-    }
-
-
-    return "outro";
 }
 
 
